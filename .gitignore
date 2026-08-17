@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.turbo/
+.next/
+.next-dev/
+out/
+next-env.d.ts
+*.log
+.DS_Store
+.vercel/
+.gstack/
+
+# Local secrets - never commit
+.env
+.env.*
+!.env.example
+tsconfig.tsbuildinfo
