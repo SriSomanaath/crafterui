@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+/* enter/exit utilities (`animate-in`, `fade-in-0`, `slide-in-from-top-2`) that
+   the tooltip component is written against. */
+@import "tw-animate-css";
+
+/* Tailwind must scan the installable component sources for utility classes. */
+@source "../registry";
+@source "../src";
+
+/* `dark:` follows an explicit .dark class (next-themes), never the OS setting.
+   The site chrome is light by design; without this a visitor whose OS is dark
+   would get dark component internals inside a light page. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Design tokens ─────────────────────────────────────────────────────────
+   The ONLY sanctioned place for shared values and keyframes. Everything else in
+   this repo is expressed as Tailwind utilities in JSX - there are no custom CSS
+   classes anywhere. The easings, shadows and keyframes here belong to the site
+   chrome; the registry components depend only on the semantic palette below, so
+   they carry nothing extra into a consumer's project. */
+@theme {
+  /* Fonts - Geist, provided by next/font via the `geist` package's CSS vars.
+     Drives preflight (html → --font-sans, code/pre → --font-mono). */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Semantic colors - shadcn token names, valued to match this site's design.
+     Components reference only these (never raw grays/hexes) so that on a
+     consumer's site they pick up the consumer's own shadcn theme, including
+     dark mode. `shadcn init` defines these in a consumer app; here they are the
+     site's own palette, and the full set is present because the registry
+     components use all of it. */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Easings */
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1); /* open + close, resize */
+  --ease-icon: cubic-bezier(0.2, 0, 0, 1); /* contextual icon cross-fade */
+
+  /* Shadow-as-border: a layered ring in place of a solid 1px border. */
+  --shadow-border:
+    0px 0px 0px 1px oklch(0 0 0 / 0.06),
+    0px 1px 2px -1px oklch(0 0 0 / 0.06),
+    0px 2px 4px 0px oklch(0 0 0 / 0.04);
+  --shadow-border-hover:
+    0px 0px 0px 1px oklch(0 0 0 / 0.08),
+    0px 1px 2px -1px oklch(0 0 0 / 0.08),
+    0px 2px 4px 0px oklch(0 0 0 / 0.06);
+  --shadow-lift: 0px 12px 28px -14px oklch(0.178 0 0 / 0.16);
+
+  /* Named animations → `animate-*` utilities. Site-chrome only - the lab
+     components animate via motion/react, not keyframes. */
+  --animate-fade-in: fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  --animate-shimmer: shimmer 1.6s linear infinite;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
+  @keyframes shimmer {
+    to {
+      background-position: -200% 0;
+    }
+  }
+}
+
+/* ── Palette ───────────────────────────────────────────────────────────────
+   crafterui's own token values, so a component looks here exactly as it does on
+   crafterui.dev. Both the registry components and the page chrome resolve
+   against these, so the navbar toggle flips the whole site. Anything still
+   hard-coded is a self-contained surface that supplies its own background (the
+   card's white glass, the always-dark install block) - leave those literal. */
+@layer base {
+  :root {
+    --radius: 0.625rem;
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.178 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.178 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.178 0 0);
+    --primary: oklch(0.178 0 0);
+    --primary-foreground: oklch(1 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.967 0.001 286.375);
+    --muted-foreground: oklch(0.551 0.027 264.364);
+    --accent: oklch(0.967 0.001 286.375);
+    --accent-foreground: oklch(0.178 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(1 0 0);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.178 0 0);
+  }
+
+  :root.dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.269 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.922 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.371 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.704 0.191 22.216);
+    --destructive-foreground: oklch(0.985 0 0);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.556 0 0);
+
+    /* The shadow-as-border rings are black-alpha, so they vanish on a dark
+       field. Re-light them so the chrome keeps its 1px edge in both modes. */
+    --shadow-border:
+      0px 0px 0px 1px oklch(1 0 0 / 0.1),
+      0px 1px 2px -1px oklch(0 0 0 / 0.4),
+      0px 2px 4px 0px oklch(0 0 0 / 0.3);
+    --shadow-border-hover:
+      0px 0px 0px 1px oklch(1 0 0 / 0.16),
+      0px 1px 2px -1px oklch(0 0 0 / 0.5),
+      0px 2px 4px 0px oklch(0 0 0 / 0.4);
+    --shadow-lift: 0px 12px 28px -14px oklch(0 0 0 / 0.6);
+  }
+}
+
+/* ── Base layer: element resets only, never class selectors ───────────────── */
+@layer base {
+  /* A bare `border` utility means the palette border, not currentColor - the
+     registry components are written against shadcn's default of that. */
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    /* Missing weights/styles should fail visibly, never render browser-faked. */
+    font-synthesis: none;
+  }
+
+  /* In-page anchors (the preview's "jump to code") glide rather than teleport. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  /* Global focus ring, matching the source site's ink outline. */
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
