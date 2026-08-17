@@ -1,0 +1,9 @@
+<svg width="694" height="90" viewBox="0 0 694 90" xmlns="http://www.w3.org/2000/svg">
+  <!-- Placeholder wordmark. Replace with the real crafterui logo artwork. -->
+  <style>
+    text { fill: #111 }
+    @media (prefers-color-scheme: dark) { text { fill: #fff } }
+  </style>
+  <text x="0" y="70" font-family="Geist, Inter, -apple-system, Helvetica, Arial, sans-serif"
+        font-size="86" font-weight="500" letter-spacing="-3">crafterui</text>
+</svg>
