@@ -1,0 +1,429 @@
+{
+  "_readme": "How a browse-wall clip is driven. Keys are component slugs; `pnpm record:previews` plays each one against /preview/<slug> in a headless Chromium and encodes it to public/crafter/. Coordinates are in the captured 1280x960 frame; `t` is ms from the first recorded frame, and a NEGATIVE t plays the step during settle, before the camera rolls - that is how a clip opens on a state the component only reaches by being used. Every timeline must end where it began, because the loop is a hard jump-cut; `loop` records why that cut is invisible. `stage` lays the demo out for a narrower window and paints it across the full frame, zooming a component that would otherwise sit lost in whitespace at card size. `waitFor` is a JS expression polled until truthy before settle, for demos whose only repeatable frame is one they reach on their own clock. `lockTheme` records once in the named theme and hands the same file to both, for components that paint their own colours instead of the theme's.",
+  "arrow-tooltip": {
+    "settleMs": 900,
+    "durationMs": 6600,
+    "loop": "Opens and closes with the pointer parked off the grid and every tooltip shut.",
+    "note": "Jump-cut moves (durationMs 0) on purpose: delayDuration is 0, so an eased path between triggers grazes neighbours and pops stray tooltips. The screencast draws no cursor, so nothing is lost. DOM order is Top, Left, Right, Bottom - nth 0,2,3,1 walks it clockwise. Recorded unscaled: this is the one component a `stage` zoom cannot help, because the tooltip is portalled to the body and placed by Floating UI off a measured rect, which any ancestor scale throws off by the scale factor - the tooltips end up nowhere near their triggers.",
+    "steps": [
+      {
+        "t": 0,
+        "action": "moveTo",
+        "x": 60,
+        "y": 60,
+        "durationMs": 0
+      },
+      {
+        "t": 300,
+        "action": "move",
+        "selector": "[data-slot=\"arrow-tooltip-trigger\"]",
+        "nth": 0,
+        "durationMs": 0
+      },
+      {
+        "t": 1700,
+        "action": "move",
+        "selector": "[data-slot=\"arrow-tooltip-trigger\"]",
+        "nth": 2,
+        "durationMs": 0
+      },
+      {
+        "t": 3100,
+        "action": "move",
+        "selector": "[data-slot=\"arrow-tooltip-trigger\"]",
+        "nth": 3,
+        "durationMs": 0
+      },
+      {
+        "t": 4500,
+        "action": "move",
+        "selector": "[data-slot=\"arrow-tooltip-trigger\"]",
+        "nth": 1,
+        "durationMs": 0
+      },
+      {
+        "t": 5900,
+        "action": "moveTo",
+        "x": 60,
+        "y": 60,
+        "durationMs": 0
+      }
+    ]
+  },
+  "dynamic-island": {
+    "stage": 900,
+    "settleMs": 1200,
+    "durationMs": 7500,
+    "loop": "Mounts in `silent` and the last click returns it to `silent`, pointer back at its opening park, with ~1s of rest before the cut.",
+    "note": "Never bare text= for Ring/Timer/Silent - the pill renders those same words itself. Only the control strip wraps them in a <button>. Cancel is clicked from inside the timer state so the clip shows the component's own control working.",
+    "steps": [
+      {
+        "t": 0,
+        "action": "moveTo",
+        "x": 640,
+        "y": 140,
+        "durationMs": 0
+      },
+      {
+        "t": 500,
+        "action": "move",
+        "selector": "button:has-text(\"Ring\")",
+        "durationMs": 400
+      },
+      {
+        "t": 1000,
+        "action": "click",
+        "selector": "button:has-text(\"Ring\")"
+      },
+      {
+        "t": 2100,
+        "action": "move",
+        "selector": "button:has-text(\"Timer\")",
+        "durationMs": 350
+      },
+      {
+        "t": 2500,
+        "action": "click",
+        "selector": "button:has-text(\"Timer\")"
+      },
+      {
+        "t": 4200,
+        "action": "move",
+        "selector": "[aria-label=\"Cancel timer\"]",
+        "durationMs": 350
+      },
+      {
+        "t": 4600,
+        "action": "click",
+        "selector": "[aria-label=\"Cancel timer\"]"
+      },
+      {
+        "t": 5300,
+        "action": "move",
+        "selector": "button:has-text(\"Silent\")",
+        "durationMs": 350
+      },
+      {
+        "t": 5700,
+        "action": "click",
+        "selector": "button:has-text(\"Silent\")"
+      },
+      {
+        "t": 6300,
+        "action": "moveTo",
+        "x": 640,
+        "y": 140,
+        "durationMs": 400
+      }
+    ]
+  },
+  "super-hover-list": {
+    "settleMs": 3500,
+    "durationMs": 6400,
+    "loop": "The pointer enters during settle and never leaves, so autoplay stays frozen for the whole take and the sweep returns to the row it started on.",
+    "note": "Covers are remote Unsplash URLs painted as background-image on hidden elements, hence the long settle. Autoplay's own period is ~66s - far past a clip - but onPointerEnter freezes it, so hovering is both the better beat and the only loopable one.",
+    "steps": [
+      {
+        "t": -600,
+        "action": "moveTo",
+        "x": 420,
+        "y": 300,
+        "durationMs": 0
+      },
+      {
+        "t": 500,
+        "action": "moveTo",
+        "x": 420,
+        "y": 724,
+        "durationMs": 2400
+      },
+      {
+        "t": 3300,
+        "action": "moveTo",
+        "x": 420,
+        "y": 300,
+        "durationMs": 2400
+      }
+    ]
+  },
+  "scroll-text-reveal": {
+    "settleMs": 900,
+    "durationMs": 7000,
+    "loop": "Returns the inner container to scrollTop 0, where every word is dim and parked right again, with an 800ms hold before the cut.",
+    "note": "The window never scrolls - the demo scrolls its own div.overflow-y-auto, read by useScroll({container}). 2880 is the exact track height at 960px tall; over/under-shoot clamps harmlessly.",
+    "steps": [
+      {
+        "t": 100,
+        "action": "moveTo",
+        "x": 640,
+        "y": 520,
+        "durationMs": 0
+      },
+      {
+        "t": 500,
+        "action": "scroll",
+        "selector": "div.overflow-y-auto",
+        "dy": 2880,
+        "durationMs": 2600
+      },
+      {
+        "t": 3900,
+        "action": "scroll",
+        "selector": "div.overflow-y-auto",
+        "dy": -2880,
+        "durationMs": 2300
+      }
+    ]
+  },
+  "letter-reveal": {
+    "settleMs": 1500,
+    "durationMs": 7200,
+    "lockTheme": "dark",
+    "loop": "Letter arrival is a pure function of scroll progress with no latched state, so rewinding to 0 un-types every glyph back to the empty headline.",
+    "note": "Locked to dark: the panel is hard-coded bg-black, but its caption and hairline use theme tokens, which turn near-invisible on black under the light theme. The -1800 return deliberately overshoots so it clamps at 0 whatever the panel height resolves to.",
+    "steps": [
+      {
+        "t": 0,
+        "action": "moveTo",
+        "x": 640,
+        "y": 520,
+        "durationMs": 0
+      },
+      {
+        "t": 300,
+        "action": "scroll",
+        "selector": "div.overflow-y-auto",
+        "dy": 1600,
+        "durationMs": 2800
+      },
+      {
+        "t": 4200,
+        "action": "scroll",
+        "selector": "div.overflow-y-auto",
+        "dy": -1800,
+        "durationMs": 2200
+      }
+    ]
+  },
+  "theme-toggle": {
+    "settleMs": 1200,
+    "durationMs": 7600,
+    "loop": "Four clicks flip the theme an even number of times and the last one re-selects the `circle` preset, so variant, direction, icon rotation and cursor all match frame 0.",
+    "note": "The preset buttons both toggle the theme and set the variant, so the count must be even AND end on circle. Skip `polygon` (identical to rectangle at start=bottom-up) and `gif` (2400ms, overruns the clip). The whole effect is document.startViewTransition, and it is gated on prefers-reduced-motion - the recorder pins that to no-preference.",
+    "steps": [
+      {
+        "t": 0,
+        "action": "moveTo",
+        "x": 1120,
+        "y": 230,
+        "durationMs": 0
+      },
+      {
+        "t": 500,
+        "action": "move",
+        "selector": "button[aria-label=\"Toggle theme\"]",
+        "durationMs": 450
+      },
+      {
+        "t": 1050,
+        "action": "click",
+        "selector": "button[aria-label=\"Toggle theme\"]"
+      },
+      {
+        "t": 2000,
+        "action": "move",
+        "selector": "button[aria-label=\"Toggle theme with rectangle reveal\"]",
+        "durationMs": 400
+      },
+      {
+        "t": 2500,
+        "action": "click",
+        "selector": "button[aria-label=\"Toggle theme with rectangle reveal\"]"
+      },
+      {
+        "t": 3400,
+        "action": "move",
+        "selector": "button[aria-label=\"Toggle theme with circle-blur reveal\"]",
+        "durationMs": 350
+      },
+      {
+        "t": 3850,
+        "action": "click",
+        "selector": "button[aria-label=\"Toggle theme with circle-blur reveal\"]"
+      },
+      {
+        "t": 4750,
+        "action": "move",
+        "selector": "button[aria-label=\"Toggle theme with circle reveal\"]",
+        "durationMs": 350
+      },
+      {
+        "t": 5200,
+        "action": "click",
+        "selector": "button[aria-label=\"Toggle theme with circle reveal\"]"
+      },
+      {
+        "t": 6100,
+        "action": "moveTo",
+        "x": 1120,
+        "y": 230,
+        "durationMs": 500
+      }
+    ],
+    "stage": 950
+  },
+  "countdown-timer": {
+    "settleMs": 1200,
+    "durationMs": 8000,
+    "loop": "Opens and closes on the same rest state - 0:33, paused - because the pre-roll reset and the closing reset leave identical frames, with 1.4s of settled numerals before the cut.",
+    "note": "The demo mounts with autoStart loop and a 33s cycle, far too long to record. The pre-roll reset pauses it so the clip can open at rest; [aria-label=\"Start timer\"] only resolves once it is paused. Five NumberFlow rolls (33 down to 28) is the beat.",
+    "steps": [
+      {
+        "t": -800,
+        "action": "click",
+        "selector": "[aria-label=\"Reset timer\"]"
+      },
+      {
+        "t": 700,
+        "action": "move",
+        "selector": "[aria-label=\"Start timer\"]",
+        "durationMs": 350
+      },
+      {
+        "t": 1100,
+        "action": "click",
+        "selector": "[aria-label=\"Start timer\"]"
+      },
+      {
+        "t": 6200,
+        "action": "move",
+        "selector": "[aria-label=\"Reset timer\"]",
+        "durationMs": 350
+      },
+      {
+        "t": 6600,
+        "action": "click",
+        "selector": "[aria-label=\"Reset timer\"]"
+      }
+    ]
+  },
+  "username-reel": {
+    "settleMs": 1600,
+    "durationMs": 7350,
+    "waitFor": "Array.from(document.querySelectorAll('div[style*=\"opacity\"]')).filter(function (el) { return el.style.opacity === '0'; }).length > 2",
+    "loop": "Exactly one 7350ms cycle (4500 spin + 850 land + 2000 delay), started inside the 1.5s rest window, so the last frame is the same landed handle the first shows.",
+    "note": "No input: the demo passes `loop` and drives itself. Where the clip STARTS is the whole game - the reel re-shuffles its names every cycle, so mid-spin frames never repeat and only the rest frame is stable. waitFor catches the moment the non-final rows drop to opacity 0, and the settle lands the camera in the middle of the window.",
+    "steps": []
+  },
+  "handwritten-response": {
+    "stage": 800,
+    "settleMs": 6500,
+    "durationMs": 6600,
+    "loop": "Recording starts after the mount-time write has finished, so frame 0 is the completed sentence; the click rewrites the identical text (done by 5700ms) and the cursor is off the button by 2000ms.",
+    "note": "The 4500ms write is exact - the component charges pen time per character, 125 units at 0.036s. The settle must not be shortened: it covers the dynamic chunk, the Caveat webfont from Google Fonts (network required, or the handwriting falls back to a system sans and the clip is pointless) and the entrance write, which does not loop.",
+    "steps": [
+      {
+        "t": 400,
+        "action": "move",
+        "selector": "text=Write it again",
+        "durationMs": 500
+      },
+      {
+        "t": 1200,
+        "action": "click",
+        "selector": "text=Write it again"
+      },
+      {
+        "t": 1600,
+        "action": "moveTo",
+        "x": 1180,
+        "y": 110,
+        "durationMs": 400
+      }
+    ]
+  },
+  "hero-carousel": {
+    "settleMs": 1500,
+    "durationMs": 7200,
+    "loop": "Uncontrolled with defaultIndex 4, and the last click returns focus to that same card, so headline, filmstrip geometry, accent grade and the 05/09 rail all land back where frame 0 had them.",
+    "note": "Nothing advances on its own - autoplay defaults off, so the clicks are required. Only the nine strip buttons carry aria-labels, so each title is unique. Do not scroll: the stage has a non-passive wheel listener that would step the strip. The closing park matters as much as the clicks: the final click leaves the pointer on a strip card, and a hovered card expands and shifts its neighbours, so without it the last frame's filmstrip sits a card-width off the first frame's. The hero photo runs a 6s linear Ken-Burns (scale 1.42 -> 1.28) that RESTARTS whenever the active card changes, so the loop is only seamless if both ends sit at the same point of that zoom. The pre-roll clicks away and back to restart it, and settleMs is set so frame 0 is the same distance past a restart as the final frame is past the closing click. Clicking the already-active card would not restart it, hence two pre-roll clicks rather than one.",
+    "steps": [
+      {
+        "t": -3000,
+        "action": "click",
+        "selector": "button[aria-label=\"Terra Cotta\"]"
+      },
+      {
+        "t": -1500,
+        "action": "click",
+        "selector": "button[aria-label=\"Neon Horizon\"]"
+      },
+      {
+        "t": 700,
+        "action": "click",
+        "selector": "button[aria-label=\"Terra Cotta\"]"
+      },
+      {
+        "t": 2200,
+        "action": "click",
+        "selector": "button[aria-label=\"Burnt Umber\"]"
+      },
+      {
+        "t": 3700,
+        "action": "click",
+        "selector": "button[aria-label=\"Terra Cotta\"]"
+      },
+      {
+        "t": 5200,
+        "action": "click",
+        "selector": "button[aria-label=\"Neon Horizon\"]"
+      },
+      {
+        "t": 6100,
+        "action": "moveTo",
+        "x": 640,
+        "y": 930,
+        "durationMs": 400
+      }
+    ]
+  },
+  "works-wheel": {
+    "settleMs": 2000,
+    "durationMs": 8000,
+    "loop": "The closing -3600 is clamped by the component to exactly turn 0, collapsing the drum back into the resting ring with 1.3s of easing headroom before the cut.",
+    "note": "WHEEL_UNITS is 900, so each 900 is exactly one item, and only the sum of a gesture matters. Gaps are kept at 400ms+ because a 140ms quiet window fires SETTLE, which snaps to the nearest item - firing inside it would snap mid-glide. Real wheel events only: the page never scrolls, the component just reads deltaY.",
+    "steps": [
+      {
+        "t": 0,
+        "action": "moveTo",
+        "x": 1160,
+        "y": 890,
+        "durationMs": 0
+      },
+      {
+        "t": 600,
+        "action": "scroll",
+        "dy": 900,
+        "durationMs": 500
+      },
+      {
+        "t": 1900,
+        "action": "scroll",
+        "dy": 900,
+        "durationMs": 350
+      },
+      {
+        "t": 3000,
+        "action": "scroll",
+        "dy": 900,
+        "durationMs": 350
+      },
+      {
+        "t": 4800,
+        "action": "scroll",
+        "dy": -3600,
+        "durationMs": 800
+      }
+    ]
+  }
+}
