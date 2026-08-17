@@ -1,0 +1,216 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "crafterui",
+  "homepage": "https://crafterui.dev",
+  "items": [
+    {
+      "name": "arrow-tooltip",
+      "type": "registry:ui",
+      "title": "Arrow Tooltip",
+      "description": "A tooltip with a fully outlined border arrow that stays seamlessly connected to the panel on every side, built on Radix UI.",
+      "dependencies": [
+        "@radix-ui/react-tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/crafterui/ui/arrow-tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dynamic-island",
+      "type": "registry:ui",
+      "title": "Dynamic Island",
+      "description": "An Apple-style Dynamic Island that morphs between idle, ring, silent, and timer states with spring physics and blurred content cross-fades using Motion.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/crafterui/ui/dynamic-island.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "countdown-timer",
+      "type": "registry:ui",
+      "title": "Countdown Timer",
+      "description": "A full-screen countdown with fluid rolling digits, play/pause and reset controls, and auto-loop, built with NumberFlow and Motion.",
+      "dependencies": [
+        "@number-flow/react",
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/crafterui/ui/countdown-timer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "theme-toggle",
+      "type": "registry:ui",
+      "title": "Theme Toggle",
+      "description": "A theme switcher that reveals the incoming light/dark mode across the page with View Transitions — circle, rectangle, polygon, gif and blurred-edge wipes from any direction.",
+      "dependencies": [
+        "next-themes"
+      ],
+      "files": [
+        {
+          "path": "registry/crafterui/ui/theme-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-text-reveal",
+      "type": "registry:ui",
+      "title": "Scroll Text Reveal",
+      "description": "A scroll-pinned paragraph where each word slides in from the right and brightens from dim to full, one by one, as it scrolls into view, built with Motion.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/crafterui/ui/scroll-text-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "super-hover",
+      "type": "registry:ui",
+      "title": "Super Hover",
+      "description": "Headless cursor hit-testing engine: tracks which element is under the pointer frame-by-frame, so hover keeps following the cursor even while the list scrolls beneath it. Ships as a controller plus React hooks, no UI.",
+      "files": [
+        {
+          "path": "registry/crafterui/ui/super-hover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "super-hover-list",
+      "type": "registry:ui",
+      "title": "Super Hover List",
+      "description": "A scrollable index whose active row — and its revealed artwork — keeps tracking the cursor while the list scrolls beneath it, unlike native hover, via frame-by-frame hit-testing.",
+      "registryDependencies": [
+        "https://crafterui.dev/r/super-hover.json"
+      ],
+      "files": [
+        {
+          "path": "registry/crafterui/ui/super-hover-list.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "username-reel",
+      "type": "registry:ui",
+      "title": "Username Reel",
+      "description": "A slot-machine handle picker that spins a vertical reel of names past a fixed prefix, highlighting the centered one, then decelerates and lands on a final username, built with Motion.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/crafterui/ui/username-reel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "handwritten-response",
+      "type": "registry:ui",
+      "title": "Handwritten Response",
+      "description": "An AI answer written out in marker pen: Caveat handwriting, a highlighter swipe, a hand-drawn circle and a crossed-out correction, with each word inking in as it streams.",
+      "files": [
+        {
+          "path": "registry/crafterui/ui/handwritten-response.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "letter-reveal",
+      "type": "registry:ui",
+      "title": "Letter Reveal",
+      "description": "Headline type that writes itself in on scroll, one letter at a time, with a synthesised tick as each lands. Letters take no space until they arrive, so a centred line opens outward from the middle. Arrival order, raggedness, spacing behaviour and the tick are all tunable, plus an onReveal hook per letter.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/crafterui/ui/letter-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hero-carousel",
+      "type": "registry:ui",
+      "title": "Hero Carousel",
+      "description": "A full-bleed editorial hero driven by a filmstrip: cards share one top edge, the focused card unfurls to full height while its neighbours stay clipped to half, and the whole background re-grades to the focused photo. Wheel, drag, click and arrow keys.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/crafterui/ui/hero-carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "works-wheel",
+      "type": "registry:ui",
+      "title": "Works Wheel",
+      "description": "A portfolio index that rests as a ring of cards around a title and, on the first notch of scroll, blows open into a vertical 3D drum you turn through - front card flat and full size, neighbours bowing away along an arc into hard perspective.",
+      "files": [
+        {
+          "path": "registry/crafterui/ui/works-wheel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "glass-lens-carousel",
+      "type": "registry:ui",
+      "title": "Glass Lens Carousel",
+      "description": "A looping image strip that is never drawn straight to screen: it renders to an offscreen texture, then a fullscreen pass samples it back through a thick optical element - drawing the picture inward, separating it into colour channels toward the perimeter, and adding a bright core, a modulated ring and an undulating edge. Scroll or drag to travel it; click a panel to bring it forward and enlarge it. Two WebGL2 passes, no 3D library.",
+      "files": [
+        {
+          "path": "registry/crafterui/ui/glass-lens-carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dither-helix-carousel",
+      "type": "registry:ui",
+      "title": "Dither Helix Carousel",
+      "description": "A spiral column of cards, each mapped onto the surface of the cylinder it orbits so its outer edges retreat in depth. As cards travel away they pass through a single-axis blur and then break up into an ordered threshold pattern read off a three-point tone scale. Pointing at a card clears it and pushes the rest back. The scale is built from your own theme tokens, so it prints correctly in light and dark.",
+      "files": [
+        {
+          "path": "registry/crafterui/ui/dither-helix-carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "molten-ring-carousel",
+      "type": "registry:ui",
+      "title": "Molten Ring Carousel",
+      "description": "A carousel with no mesh and no image elements: every card is a rounded-box distance field, and one fullscreen pass takes a smooth minimum across all of them. Cards approaching fuse instead of overlapping, and cards separating trail strands that narrow, hang and part on their own, because a strand is another term in the same field. The pointer paints nothing - it widens the fusion radius beneath itself and tips nearby cards toward it.",
+      "files": [
+        {
+          "path": "registry/crafterui/ui/molten-ring-carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

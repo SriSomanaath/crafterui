@@ -1,0 +1,26 @@
+# crafterui
+
+> Open Source motion and interaction components - Tailwind CSS + motion/react, installable with the shadcn CLI. Scroll reveals, kinetic type, tooltips, toggles and more.
+
+Each component has a single-file markdown doc - description, install command, usage example and full source - at /r/<name>.md. Fetch that one file for complete context on a component.
+
+## Components
+
+- [Arrow Tooltip](https://crafterui.dev/r/arrow-tooltip.md): A tooltip with a fully outlined border arrow that stays seamlessly connected to the panel on every side, built on Radix UI.
+- [Dynamic Island](https://crafterui.dev/r/dynamic-island.md): An Apple-style Dynamic Island that morphs between idle, ring, silent, and timer states with spring physics and blurred content cross-fades using Motion.
+- [Countdown Timer](https://crafterui.dev/r/countdown-timer.md): A full-screen countdown with fluid rolling digits, play/pause and reset controls, and auto-loop, built with NumberFlow and Motion.
+- [Theme Toggle](https://crafterui.dev/r/theme-toggle.md): A theme switcher that reveals the incoming light/dark mode across the page with View Transitions — circle, rectangle, polygon, gif and blurred-edge wipes from any direction.
+- [Scroll Text Reveal](https://crafterui.dev/r/scroll-text-reveal.md): A scroll-pinned paragraph where each word slides in from the right and brightens from dim to full, one by one, as it scrolls into view, built with Motion.
+- [Super Hover List](https://crafterui.dev/r/super-hover-list.md): A scrollable index whose active row — and its revealed artwork — keeps tracking the cursor while the list scrolls beneath it, unlike native hover, via frame-by-frame hit-testing.
+- [Username Reel](https://crafterui.dev/r/username-reel.md): A slot-machine handle picker that spins a vertical reel of names past a fixed prefix, highlighting the centered one, then decelerates and lands on a final username, built with Motion.
+- [Handwritten Response](https://crafterui.dev/r/handwritten-response.md): An AI answer written out in marker pen: Caveat handwriting, a highlighter swipe, a hand-drawn circle and a crossed-out correction, with each word inking in as it streams.
+- [Letter Reveal](https://crafterui.dev/r/letter-reveal.md): Headline type that writes itself in on scroll, one letter at a time, with a synthesised tick as each lands. Letters take no space until they arrive, so a centred line opens outward from the middle. Arrival order, raggedness, spacing behaviour and the tick are all tunable, plus an onReveal hook per letter.
+- [Hero Carousel](https://crafterui.dev/r/hero-carousel.md): A full-bleed editorial hero driven by a filmstrip: cards share one top edge, the focused card unfurls to full height while its neighbours stay clipped to half, and the whole background re-grades to the focused photo. Wheel, drag, click and arrow keys.
+- [Works Wheel](https://crafterui.dev/r/works-wheel.md): A portfolio index that rests as a ring of cards around a title and, on the first notch of scroll, blows open into a vertical 3D drum you turn through - front card flat and full size, neighbours bowing away along an arc into hard perspective.
+- [Glass Lens Carousel](https://crafterui.dev/r/glass-lens-carousel.md): A looping image strip that is never drawn straight to screen: it renders to an offscreen texture, then a fullscreen pass samples it back through a thick optical element - drawing the picture inward, separating it into colour channels toward the perimeter, and adding a bright core, a modulated ring and an undulating edge. Scroll or drag to travel it; click a panel to bring it forward and enlarge it. Two WebGL2 passes, no 3D library.
+- [Dither Helix Carousel](https://crafterui.dev/r/dither-helix-carousel.md): A spiral column of cards, each mapped onto the surface of the cylinder it orbits so its outer edges retreat in depth. As cards travel away they pass through a single-axis blur and then break up into an ordered threshold pattern read off a three-point tone scale. Pointing at a card clears it and pushes the rest back. The scale is built from your own theme tokens, so it prints correctly in light and dark.
+- [Molten Ring Carousel](https://crafterui.dev/r/molten-ring-carousel.md): A carousel with no mesh and no image elements: every card is a rounded-box distance field, and one fullscreen pass takes a smooth minimum across all of them. Cards approaching fuse instead of overlapping, and cards separating trail strands that narrow, hang and part on their own, because a strand is another term in the same field. The pointer paints nothing - it widens the fusion radius beneath itself and tips nearby cards toward it.
+
+## Registry
+
+- [registry.json](https://crafterui.dev/r/registry.json): shadcn-format registry index (per-item payloads at /r/<name>.json, everything at /r/all.json)

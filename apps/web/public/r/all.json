@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "all",
+  "type": "registry:ui",
+  "title": "All crafterui components",
+  "description": "Arrow Tooltip, Dynamic Island, Countdown Timer, Theme Toggle, Scroll Text Reveal, Super Hover, Super Hover List, Username Reel, Handwritten Response, Letter Reveal, Hero Carousel, Works Wheel, Glass Lens Carousel, Dither Helix Carousel, Molten Ring Carousel",
+  "registryDependencies": [
+    "https://crafterui.dev/r/arrow-tooltip.json",
+    "https://crafterui.dev/r/dynamic-island.json",
+    "https://crafterui.dev/r/countdown-timer.json",
+    "https://crafterui.dev/r/theme-toggle.json",
+    "https://crafterui.dev/r/scroll-text-reveal.json",
+    "https://crafterui.dev/r/super-hover.json",
+    "https://crafterui.dev/r/super-hover-list.json",
+    "https://crafterui.dev/r/username-reel.json",
+    "https://crafterui.dev/r/handwritten-response.json",
+    "https://crafterui.dev/r/letter-reveal.json",
+    "https://crafterui.dev/r/hero-carousel.json",
+    "https://crafterui.dev/r/works-wheel.json",
+    "https://crafterui.dev/r/glass-lens-carousel.json",
+    "https://crafterui.dev/r/dither-helix-carousel.json",
+    "https://crafterui.dev/r/molten-ring-carousel.json"
+  ]
+}
