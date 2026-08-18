@@ -42,6 +42,7 @@ export interface GlassLensCarouselProps
   focusable?: boolean
   /** Label on the focused panel's dismiss control. @default "Close" */
   closeLabel?: string
+  /** Extra classes on the root surface. @default undefined */
   className?: string
 }
 

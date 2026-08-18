@@ -54,6 +54,7 @@ export interface DitherHelixCarouselProps
   cardRatio?: number
   /** Play the arrival - cards materialize out of the grain. @default true */
   entry?: boolean
+  /** Extra classes on the root surface. @default undefined */
   className?: string
 }
 

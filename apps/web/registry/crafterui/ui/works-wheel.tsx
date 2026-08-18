@@ -29,9 +29,9 @@ export interface WorksWheelProps extends Omit<
   "children"
 > {
   items: WorksWheelItem[]
-  /** Sits in the middle of the ring. */
+  /** Sits in the middle of the ring. @default undefined */
   label?: string
-  /** Label on the card's hover affordance. Omit to drop it. */
+  /** Label on the card's hover affordance. Omit to drop it. @default undefined */
   action?: string
 }
 

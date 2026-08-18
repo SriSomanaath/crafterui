@@ -257,7 +257,7 @@ export function HandwrittenResponse({
   return (
     <div
       className={cn(
-        "font-[Caveat] text-[1.75rem] leading-[2.375rem] text-black dark:text-white",
+        "font-[Caveat] text-[1.75rem] leading-[2.375rem] text-foreground",
         className
       )}
     >

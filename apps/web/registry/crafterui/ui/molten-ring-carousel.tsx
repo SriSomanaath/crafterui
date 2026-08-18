@@ -47,6 +47,7 @@ export interface MoltenRingCarouselProps
   threads?: boolean
   /** Optical band that bends the image at the upper and lower borders. @default true */
   glass?: boolean
+  /** Extra classes on the root surface. @default undefined */
   className?: string
 }
 

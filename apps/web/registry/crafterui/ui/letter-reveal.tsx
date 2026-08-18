@@ -86,13 +86,13 @@ export interface LetterRevealProps {
   track?: number
   /** Tick config, or false for a silent component with no toggle. @default true */
   sound?: boolean | LetterRevealSound
-  /** Called as each letter lands - hook up your own audio, haptics or analytics. */
+  /** Called as each letter lands - hook up your own audio, haptics or analytics. @default undefined */
   onReveal?: (letter: { char: string; line: number; index: number }) => void
   /** Caption pinned under the type; pass `null` to hide it. @default "Scroll" */
   label?: string | null
-  /** Extra classes on the root surface. */
+  /** Extra classes on the root surface. @default undefined */
   className?: string
-  /** Extra classes on the headline. */
+  /** Extra classes on the headline. @default undefined */
   textClassName?: string
 }
 
