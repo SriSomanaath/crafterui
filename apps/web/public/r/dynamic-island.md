@@ -3,7 +3,7 @@
 An Apple-style Dynamic Island that morphs between idle, ring, silent, and timer states with spring physics and blurred content cross-fades using Motion.
 
 - Demo: https://crafterui.com/components/dynamic-island
-- Install: `npx @crafterui/cli@latest components add dynamic-island` - or `npx shadcn@latest add https://crafterui.com/r/dynamic-island.json`
+- Install: `npx shadcn@latest add https://crafterui.com/r/dynamic-island.json`
 - Dependencies: motion
 - Installs to: `registry/crafterui/ui/dynamic-island.tsx`
 

@@ -3,7 +3,7 @@
 A full-screen countdown with fluid rolling digits, play/pause and reset controls, and auto-loop, built with NumberFlow and Motion.
 
 - Demo: https://crafterui.com/components/countdown-timer
-- Install: `npx @crafterui/cli@latest components add countdown-timer` - or `npx shadcn@latest add https://crafterui.com/r/countdown-timer.json`
+- Install: `npx shadcn@latest add https://crafterui.com/r/countdown-timer.json`
 - Dependencies: @number-flow/react, motion, lucide-react
 - Installs to: `registry/crafterui/ui/countdown-timer.tsx`
 

@@ -3,7 +3,7 @@
 A spiral column of cards, each mapped onto the surface of the cylinder it orbits so its outer edges retreat in depth. As cards travel away they pass through a single-axis blur and then break up into an ordered threshold pattern read off a three-point tone scale. Pointing at a card clears it and pushes the rest back. The scale is built from your own theme tokens, so it prints correctly in light and dark.
 
 - Demo: https://crafterui.com/components/dither-helix-carousel
-- Install: `npx @crafterui/cli@latest components add dither-helix-carousel` - or `npx shadcn@latest add https://crafterui.com/r/dither-helix-carousel.json`
+- Install: `npx shadcn@latest add https://crafterui.com/r/dither-helix-carousel.json`
 - Installs to: `registry/crafterui/ui/dither-helix-carousel.tsx`
 
 ## Usage
@@ -16,22 +16,23 @@ import {
   type DitherHelixItem,
 } from "@/registry/crafterui/ui/dither-helix-carousel"
 
-// Placeholder imagery collected from Pinterest, saved under public/work. Swap
-// the paths and the names for your own index. The art is cover-fitted into the
-// card shape, so set `cardRatio` to whatever your own pictures are.
+// Placeholder art served straight off the crafterui CDN so the demo works the
+// moment it is installed - no assets to copy into your public/. Swap the names
+// and the titles for your own index. The art is cover-fitted into the card
+// shape, so set `cardRatio` to whatever your own pictures are (these are 9:16).
+const ART = (name: string) =>
+  `/art/${name}.jpg`
+
 const WORK: DitherHelixItem[] = [
-  { image: "/work/verdant.jpg", title: "Verdant" },
-  { image: "/work/ember-field.jpg", title: "Ember Field" },
-  { image: "/work/northbound.jpg", title: "Northbound" },
-  { image: "/work/marigold.jpg", title: "Marigold" },
-  { image: "/work/signal-grid.jpg", title: "Signal Grid" },
-  { image: "/work/riot-press.jpg", title: "Riot Press" },
-  { image: "/work/nightshift.jpg", title: "Nightshift" },
-  { image: "/work/cold-chrome.jpg", title: "Cold Chrome" },
-  { image: "/work/spectral.jpg", title: "Spectral" },
-  { image: "/work/dune-study.jpg", title: "Dune Study" },
-  { image: "/work/afterlight.jpg", title: "Afterlight" },
-  { image: "/work/redstone.jpg", title: "Redstone" },
+  { image: ART("prismatic-rift-anime"), title: "Prismatic Rift" },
+  { image: ART("black-hole-ember-clouds"), title: "Ember Clouds" },
+  { image: ART("neon-cave-portal-silhouette"), title: "Neon Portal" },
+  { image: ART("red-ribbon-typography"), title: "Red Ribbon" },
+  { image: ART("celestial-light-figure"), title: "Celestial" },
+  { image: ART("neon-portrait-uplight"), title: "Uplight" },
+  { image: ART("indigo-liquid-marble"), title: "Indigo Marble" },
+  { image: ART("rocket-launch-gradient"), title: "Launch Window" },
+  { image: ART("astronaut-cosmic-wave"), title: "Cosmic Wave" },
 ]
 
 export default function DitherHelixCarouselDemo() {
@@ -43,7 +44,7 @@ export default function DitherHelixCarouselDemo() {
       focusBand={0.28}
       twist={0.8}
       rise={0.79}
-      cardRatio={1.7}
+      cardRatio={0.56}
     />
   )
 }
@@ -1066,7 +1067,7 @@ export function DitherHelixCarousel({
       <section
         aria-roledescription="carousel"
         aria-label={brand ?? "Gallery"}
-        className={cn("bg-background text-foreground relative h-full w-full", className)}
+        className={cn("bg-background text-foreground relative h-full min-h-[24rem] w-full", className)}
         {...props}
       >
         <ul className="flex h-full snap-y snap-mandatory flex-col items-center gap-3 overflow-y-auto py-[6%]">
@@ -1090,7 +1091,7 @@ export function DitherHelixCarousel({
       aria-roledescription="carousel"
       aria-label={brand ?? "Gallery"}
       className={cn(
-        "bg-background text-foreground relative h-full w-full overflow-hidden select-none",
+        "bg-background text-foreground relative h-full min-h-[24rem] w-full overflow-hidden select-none",
         className
       )}
       {...props}

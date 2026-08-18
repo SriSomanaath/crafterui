@@ -2,7 +2,7 @@
 
 Headless cursor hit-testing engine: tracks which element is under the pointer frame-by-frame, so hover keeps following the cursor even while the list scrolls beneath it. Ships as a controller plus React hooks, no UI.
 
-- Install: `npx @crafterui/cli@latest components add super-hover` - or `npx shadcn@latest add https://crafterui.com/r/super-hover.json`
+- Install: `npx shadcn@latest add https://crafterui.com/r/super-hover.json`
 - Installs to: `registry/crafterui/ui/super-hover.tsx`
 
 ## Source - `registry/crafterui/ui/super-hover.tsx`

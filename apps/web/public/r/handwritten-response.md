@@ -3,7 +3,7 @@
 An AI answer written out in marker pen: Caveat handwriting, a highlighter swipe, a hand-drawn circle and a crossed-out correction, with each word inking in as it streams.
 
 - Demo: https://crafterui.com/components/handwritten-response
-- Install: `npx @crafterui/cli@latest components add handwritten-response` - or `npx shadcn@latest add https://crafterui.com/r/handwritten-response.json`
+- Install: `npx shadcn@latest add https://crafterui.com/r/handwritten-response.json`
 - Installs to: `registry/crafterui/ui/handwritten-response.tsx`
 
 ## Usage
@@ -77,10 +77,12 @@ export interface HandwrittenResponseProps {
   className?: string
 }
 
-// The marker pair. The swipe is a fixed light amber, so its ink is fixed too -
-// inheriting the theme's foreground would put white on yellow in dark mode.
-const HIGHLIGHT = "#f5e1a8"
-const HIGHLIGHT_INK = "#1c1c1c"
+// The highlighter amber. The band is deliberately shorter than the cap height
+// (see Swipe), so ascenders always sit on the page and never on the swipe -
+// which means the ink has to stay the theme foreground and the BAND has to
+// adapt instead. Thinned in dark mode: amber over near-black still reads as a
+// marker and carries white ink at ~6:1.
+const HIGHLIGHT = "bg-[#f5e1a8] dark:bg-[#f5e1a8]/40"
 
 // Pen time is charged per character rather than per word, so the nib moves at
 // one steady speed instead of racing through "extraordinarily" and crawling
@@ -214,15 +216,13 @@ function Strike(drawn: Drawn) {
    because a padded background box grows to the whole line and reads as a label
    rather than as one swipe of a marker. It takes the same left-to-right wipe as
    the words, over the same window, so the amber is always already under the ink
-   - drawing it afterwards would leave HIGHLIGHT_INK on the page background, and
-   in dark mode that is near-black on near-black. */
+   - drawing it afterwards would show the words before their marker. */
 function Swipe({ delay, dur }: Drawn) {
   return (
     <span
       aria-hidden="true"
       data-ink=""
       style={{
-        background: HIGHLIGHT,
         ...(dur === undefined
           ? null
           : {
@@ -230,7 +230,10 @@ function Swipe({ delay, dur }: Drawn) {
               animationDelay: `${delay}s`,
             }),
       }}
-      className="absolute right-[-0.24em] bottom-[0.12em] left-[-0.24em] h-[0.6em] rounded-full"
+      className={cn(
+        "absolute right-[-0.24em] bottom-[0.12em] left-[-0.24em] h-[0.6em] rounded-full",
+        HIGHLIGHT
+      )}
     />
   )
 }
@@ -382,12 +385,7 @@ export function HandwrittenResponse({
         return (
           <span key={t} className="relative inline-block">
             {token.mark === "mark" ? <Swipe {...swipe} /> : null}
-            <span
-              className="relative"
-              style={token.mark === "mark" ? { color: HIGHLIGHT_INK } : undefined}
-            >
-              {inked}
-            </span>
+            <span className="relative">{inked}</span>
             {token.mark === "circle" ? <Ring {...after} /> : null}
             {token.mark === "strike" ? <Strike {...after} /> : null}
           </span>

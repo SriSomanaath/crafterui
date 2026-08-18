@@ -3,7 +3,7 @@
 A tooltip with a fully outlined border arrow that stays seamlessly connected to the panel on every side, built on Radix UI.
 
 - Demo: https://crafterui.com/components/arrow-tooltip
-- Install: `npx @crafterui/cli@latest components add arrow-tooltip` - or `npx shadcn@latest add https://crafterui.com/r/arrow-tooltip.json`
+- Install: `npx shadcn@latest add https://crafterui.com/r/arrow-tooltip.json`
 - Dependencies: @radix-ui/react-tooltip
 - Installs to: `registry/crafterui/ui/arrow-tooltip.tsx`
 

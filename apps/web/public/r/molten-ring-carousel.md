@@ -3,7 +3,7 @@
 A carousel with no mesh and no image elements: every card is a rounded-box distance field, and one fullscreen pass takes a smooth minimum across all of them. Cards approaching fuse instead of overlapping, and cards separating trail strands that narrow, hang and part on their own, because a strand is another term in the same field. The pointer paints nothing - it widens the fusion radius beneath itself and tips nearby cards toward it.
 
 - Demo: https://crafterui.com/components/molten-ring-carousel
-- Install: `npx @crafterui/cli@latest components add molten-ring-carousel` - or `npx shadcn@latest add https://crafterui.com/r/molten-ring-carousel.json`
+- Install: `npx shadcn@latest add https://crafterui.com/r/molten-ring-carousel.json`
 - Installs to: `registry/crafterui/ui/molten-ring-carousel.tsx`
 
 ## Usage
@@ -16,22 +16,23 @@ import {
   type MoltenRingItem,
 } from "@/registry/crafterui/ui/molten-ring-carousel"
 
-// Placeholder imagery collected from Pinterest, saved under public/work. Swap
-// the paths and the copy for your own index - the list is the ring order, so
-// reordering these rows reorders the arc and the numbering together.
+// Placeholder art served straight off the crafterui CDN so the demo works the
+// moment it is installed - no assets to copy into your public/. Swap the names
+// and the copy for your own index - the list is the ring order, so reordering
+// these rows reorders the arc and the numbering together.
+const ART = (name: string) =>
+  `/art/${name}.jpg`
+
 const WORK: MoltenRingItem[] = [
-  { image: "/work/verdant.jpg", title: "Verdant", meta: "Editorial · 2026" },
-  { image: "/work/ember-field.jpg", title: "Ember Field", meta: "Campaign · 2026" },
-  { image: "/work/northbound.jpg", title: "Northbound", meta: "Campaign · 2026" },
-  { image: "/work/marigold.jpg", title: "Marigold", meta: "Editorial · 2025" },
-  { image: "/work/signal-grid.jpg", title: "Signal Grid", meta: "Identity · 2025" },
-  { image: "/work/riot-press.jpg", title: "Riot Press", meta: "Print · 2025" },
-  { image: "/work/nightshift.jpg", title: "Nightshift", meta: "Automotive · 2025" },
-  { image: "/work/cold-chrome.jpg", title: "Cold Chrome", meta: "Automotive · 2024" },
-  { image: "/work/spectral.jpg", title: "Spectral", meta: "Motion · 2024" },
-  { image: "/work/dune-study.jpg", title: "Dune Study", meta: "Art direction · 2024" },
-  { image: "/work/afterlight.jpg", title: "Afterlight", meta: "Film · 2023" },
-  { image: "/work/redstone.jpg", title: "Redstone", meta: "Campaign · 2023" },
+  { image: ART("prismatic-rift-anime"), title: "Prismatic Rift", meta: "Motion · 2026" },
+  { image: ART("black-hole-ember-clouds"), title: "Ember Clouds", meta: "Campaign · 2026" },
+  { image: ART("neon-cave-portal-silhouette"), title: "Neon Portal", meta: "Art direction · 2026" },
+  { image: ART("red-ribbon-typography"), title: "Red Ribbon", meta: "Type · 2025" },
+  { image: ART("celestial-light-figure"), title: "Celestial", meta: "Editorial · 2025" },
+  { image: ART("neon-portrait-uplight"), title: "Uplight", meta: "Portrait · 2025" },
+  { image: ART("indigo-liquid-marble"), title: "Indigo Marble", meta: "Identity · 2024" },
+  { image: ART("rocket-launch-gradient"), title: "Launch Window", meta: "Film · 2024" },
+  { image: ART("astronaut-cosmic-wave"), title: "Cosmic Wave", meta: "Campaign · 2023" },
 ]
 
 export default function MoltenRingCarouselDemo() {
@@ -40,8 +41,8 @@ export default function MoltenRingCarouselDemo() {
       items={WORK}
       brand="crafterui"
       arc={1.05}
-      cardSize={0.3}
-      cardRatio={1.5}
+      cardSize={0.18}
+      cardRatio={0.56}
       fuse={0.09}
     />
   )
@@ -513,6 +514,9 @@ function packAtlas(images: HTMLImageElement[], cols: number, cell: number, ratio
   if (!ctx) return sheet
   const cellH = Math.round(cell / ratio)
   images.forEach((image, i) => {
+    // A card that never decoded has no natural size; scaling by it yields
+    // Infinity and drawImage throws, taking every later cell with it.
+    if (!image.naturalWidth || !image.naturalHeight) return
     const x = (i % cols) * cell
     const y = Math.floor(i / cols) * cellH
     const scale = Math.max(cell / image.naturalWidth, cellH / image.naturalHeight)
@@ -604,9 +608,13 @@ export function MoltenRingCarousel({
       const image = new Image()
       image.crossOrigin = "anonymous"
       image.decoding = "async"
-      image.onload = () => {
+      // Settled, not loaded. The sheet is all-or-nothing, so a single URL that
+      // 404s or fails CORS would otherwise hold every card untextured for the
+      // life of the component - the failure mode is a blank white ring with
+      // nothing in the console.
+      const settle = () => {
         if (++loaded < count) return
-        // Assembled once the final image lands; packing early would leave unset
+        // Assembled once the last image settles; packing early would leave unset
         // cells sampling as solid black cards.
         atlas = gl.createTexture()
         gl.bindTexture(gl.TEXTURE_2D, atlas)
@@ -620,6 +628,11 @@ export function MoltenRingCarousel({
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR)
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
+      }
+      image.onload = settle
+      image.onerror = () => {
+        console.warn(`molten-ring-carousel: ${item.image} failed to load`)
+        settle()
       }
       image.src = item.image
       return image
@@ -959,7 +972,7 @@ export function MoltenRingCarousel({
       <section
         aria-roledescription="carousel"
         aria-label={brand ?? "Gallery"}
-        className={cn("bg-background text-foreground relative h-full w-full", className)}
+        className={cn("bg-background text-foreground relative h-full min-h-[24rem] w-full", className)}
         {...props}
       >
         <ul className="flex h-full snap-y snap-mandatory flex-col items-center gap-3 overflow-y-auto py-[6%]">
@@ -983,7 +996,7 @@ export function MoltenRingCarousel({
       aria-roledescription="carousel"
       aria-label={brand ?? "Gallery"}
       className={cn(
-        "bg-background text-foreground relative h-full w-full overflow-hidden select-none",
+        "bg-background text-foreground relative h-full min-h-[24rem] w-full overflow-hidden select-none",
         className
       )}
       {...props}

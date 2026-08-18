@@ -3,7 +3,7 @@
 Headline type that writes itself in on scroll, one letter at a time, with a synthesised tick as each lands. Letters take no space until they arrive, so a centred line opens outward from the middle. Arrival order, raggedness, spacing behaviour and the tick are all tunable, plus an onReveal hook per letter.
 
 - Demo: https://crafterui.com/components/letter-reveal
-- Install: `npx @crafterui/cli@latest components add letter-reveal` - or `npx shadcn@latest add https://crafterui.com/r/letter-reveal.json`
+- Install: `npx shadcn@latest add https://crafterui.com/r/letter-reveal.json`
 - Dependencies: motion
 - Installs to: `registry/crafterui/ui/letter-reveal.tsx`
 
