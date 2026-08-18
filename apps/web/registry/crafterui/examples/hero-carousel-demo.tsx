@@ -5,76 +5,76 @@ import {
   type HeroCarouselItem,
 } from "@/registry/crafterui/ui/hero-carousel"
 
-// Placeholder photography served straight off the Unsplash CDN so the demo
-// works the moment it is installed - no assets to copy into your public/.
-// Swap the ids for your own art direction; each item's `accent` is the hue the
-// whole backdrop grades to when that card takes focus.
-const UNSPLASH = (id: string) =>
-  `https://images.unsplash.com/photo-${id}?w=1000&h=1400&fit=crop&crop=faces&q=80&auto=format`
+// Placeholder art served straight off the crafterui CDN so the demo works the
+// moment it is installed - no assets to copy into your public/. Swap the names
+// for your own art direction; each item's `accent` is the hue the whole
+// backdrop grades to when that card takes focus.
+const ART = (name: string) =>
+  `/art/${name}.jpg`
 
 const LOOKS: HeroCarouselItem[] = [
   {
-    title: "Deep\nSignal",
-    image: UNSPLASH("1509631179647-0177331693ae"),
+    title: "Prismatic\nRift",
+    image: ART("prismatic-rift-anime"),
     credit: "BY AURELIA STUDIO.",
     meta: ["SAT NOV 15", "5-10 PM", "MIAMI"],
-    accent: "#00798c",
+    accent: "#7b61ff",
   },
   {
-    title: "Paper\nRose",
-    image: UNSPLASH("1496747611176-843222e1e57c"),
+    title: "Ember\nClouds",
+    image: ART("black-hole-ember-clouds"),
     credit: "BY MAISON DELACROIX.",
     meta: ["SUN NOV 16", "2-6 PM", "PARIS"],
-    accent: "#c2a98a",
+    accent: "#ff4114",
   },
   {
-    title: "White\nNoise",
-    image: UNSPLASH("1539109136881-3be0616acf4b"),
+    title: "Neon\nPortal",
+    image: ART("neon-cave-portal-silhouette"),
     credit: "BY STUDIO VANTA.",
     meta: ["THU NOV 20", "8-11 PM", "BERLIN"],
-    accent: "#8d94a6",
+    accent: "#00c8ff",
   },
   {
-    title: "Golden\nHour",
-    image: UNSPLASH("1515886657613-9f3515b0c78f"),
+    title: "Red\nRibbon",
+    image: ART("red-ribbon-typography"),
     credit: "BY CASA SOLARA.",
     meta: ["FRI NOV 21", "6-9 PM", "LISBON"],
-    accent: "#fbad28",
+    accent: "#e5231b",
   },
   {
-    title: "Neon\nHorizon",
-    image: UNSPLASH("1494790108377-be9c29b29330"),
+    title: "Celestial\nLight",
+    image: ART("celestial-light-figure"),
     credit: "BY AURELIA STUDIO.",
     meta: ["SAT NOV 22", "5-10 PM", "MIAMI"],
-    accent: "#f61c00",
+    accent: "#2f7bff",
   },
   {
-    title: "Terra\nCotta",
-    image: UNSPLASH("1483985988355-763728e1935b"),
+    title: "Neon\nUplight",
+    image: ART("neon-portrait-uplight"),
     credit: "BY ATELIER SUD.",
     meta: ["SUN NOV 23", "4-8 PM", "MARRAKECH"],
-    accent: "#cf7e53",
+    accent: "#ff2f9c",
   },
   {
-    title: "Burnt\nUmber",
-    image: UNSPLASH("1506794778202-cad84cf45f1d"),
+    title: "Indigo\nMarble",
+    image: ART("indigo-liquid-marble"),
     credit: "BY OCHRE COLLECTIVE.",
     meta: ["WED NOV 26", "7-11 PM", "LAGOS"],
-    accent: "#8c430b",
+    accent: "#4356c8",
   },
   {
-    title: "Cobalt\nDrift",
-    image: UNSPLASH("1517841905240-472988babdf9"),
+    title: "Launch\nWindow",
+    image: ART("rocket-launch-gradient"),
     credit: "BY STUDIO NORTE.",
     meta: ["FRI NOV 28", "9 PM-2 AM", "SÃO PAULO"],
-    accent: "#0087cf",
+    accent: "#14307a",
   },
   {
-    title: "After\nDark",
-    image: UNSPLASH("1534528741775-53994a69daeb"),
+    title: "Cosmic\nWave",
+    image: ART("astronaut-cosmic-wave"),
     credit: "BY NOIR ET CIE.",
     meta: ["SAT NOV 29", "10 PM-4 AM", "TOKYO"],
-    accent: "#5b6478",
+    accent: "#ff3b6b",
   },
 ]
 

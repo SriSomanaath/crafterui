@@ -5,22 +5,23 @@ import {
   type MoltenRingItem,
 } from "@/registry/crafterui/ui/molten-ring-carousel"
 
-// Placeholder imagery collected from Pinterest, saved under public/work. Swap
-// the paths and the copy for your own index - the list is the ring order, so
-// reordering these rows reorders the arc and the numbering together.
+// Placeholder art served straight off the crafterui CDN so the demo works the
+// moment it is installed - no assets to copy into your public/. Swap the names
+// and the copy for your own index - the list is the ring order, so reordering
+// these rows reorders the arc and the numbering together.
+const ART = (name: string) =>
+  `/art/${name}.jpg`
+
 const WORK: MoltenRingItem[] = [
-  { image: "/work/verdant.jpg", title: "Verdant", meta: "Editorial · 2026" },
-  { image: "/work/ember-field.jpg", title: "Ember Field", meta: "Campaign · 2026" },
-  { image: "/work/northbound.jpg", title: "Northbound", meta: "Campaign · 2026" },
-  { image: "/work/marigold.jpg", title: "Marigold", meta: "Editorial · 2025" },
-  { image: "/work/signal-grid.jpg", title: "Signal Grid", meta: "Identity · 2025" },
-  { image: "/work/riot-press.jpg", title: "Riot Press", meta: "Print · 2025" },
-  { image: "/work/nightshift.jpg", title: "Nightshift", meta: "Automotive · 2025" },
-  { image: "/work/cold-chrome.jpg", title: "Cold Chrome", meta: "Automotive · 2024" },
-  { image: "/work/spectral.jpg", title: "Spectral", meta: "Motion · 2024" },
-  { image: "/work/dune-study.jpg", title: "Dune Study", meta: "Art direction · 2024" },
-  { image: "/work/afterlight.jpg", title: "Afterlight", meta: "Film · 2023" },
-  { image: "/work/redstone.jpg", title: "Redstone", meta: "Campaign · 2023" },
+  { image: ART("prismatic-rift-anime"), title: "Prismatic Rift", meta: "Motion · 2026" },
+  { image: ART("black-hole-ember-clouds"), title: "Ember Clouds", meta: "Campaign · 2026" },
+  { image: ART("neon-cave-portal-silhouette"), title: "Neon Portal", meta: "Art direction · 2026" },
+  { image: ART("red-ribbon-typography"), title: "Red Ribbon", meta: "Type · 2025" },
+  { image: ART("celestial-light-figure"), title: "Celestial", meta: "Editorial · 2025" },
+  { image: ART("neon-portrait-uplight"), title: "Uplight", meta: "Portrait · 2025" },
+  { image: ART("indigo-liquid-marble"), title: "Indigo Marble", meta: "Identity · 2024" },
+  { image: ART("rocket-launch-gradient"), title: "Launch Window", meta: "Film · 2024" },
+  { image: ART("astronaut-cosmic-wave"), title: "Cosmic Wave", meta: "Campaign · 2023" },
 ]
 
 export default function MoltenRingCarouselDemo() {
@@ -29,8 +30,8 @@ export default function MoltenRingCarouselDemo() {
       items={WORK}
       brand="crafterui"
       arc={1.05}
-      cardSize={0.3}
-      cardRatio={1.5}
+      cardSize={0.18}
+      cardRatio={0.56}
       fuse={0.09}
     />
   )

@@ -12,6 +12,21 @@ const nextConfig = {
   distDir: process.env.NEXT_DIST_DIR || ".next",
   // Trace from the monorepo root (silences the multi-lockfile heuristic).
   outputFileTracingRoot: path.join(appDir, "..", ".."),
+  async rewrites() {
+    return [
+      {
+        // The bucket holding the demo photography sends no
+        // Access-Control-Allow-Origin, and the WebGL carousels must set
+        // crossOrigin="anonymous" to use those pixels as a GL texture - without
+        // it the atlas canvas is tainted and texImage2D throws. Proxying makes
+        // the art same-origin, so CORS never enters the picture. Delete this and
+        // point ART() back at the bucket once it has a CORS policy.
+        source: "/art/:path*",
+        destination:
+          "https://pub-45c4a3d9611041d08fe82d52599b72b0.r2.dev/primary-showcase-assets/:path*",
+      },
+    ];
+  },
   async headers() {
     return [
       {

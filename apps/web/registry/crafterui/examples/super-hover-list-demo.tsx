@@ -8,17 +8,21 @@ import {
   type SuperHoverListItem,
 } from "@/registry/crafterui/ui/super-hover-list"
 
+// Placeholder cover art served straight off the crafterui CDN so the demo
+// works the moment it is installed - no assets to copy into your public/.
+const ART = (name: string) =>
+  `/art/${name}.jpg`
+
 const COVERS = [
-  "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=300&h=300&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=300&h=300&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?w=300&h=300&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1486718448742-163732cd1544?w=300&h=300&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1448375240586-882707db888b?w=300&h=300&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=300&h=300&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=300&h=300&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=300&h=300&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=300&h=300&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=300&h=300&q=80&auto=format&fit=crop",
+  ART("prismatic-rift-anime"),
+  ART("black-hole-ember-clouds"),
+  ART("neon-cave-portal-silhouette"),
+  ART("red-ribbon-typography"),
+  ART("celestial-light-figure"),
+  ART("neon-portrait-uplight"),
+  ART("indigo-liquid-marble"),
+  ART("rocket-launch-gradient"),
+  ART("astronaut-cosmic-wave"),
 ]
 
 const TITLES = [
