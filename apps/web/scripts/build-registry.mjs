@@ -2,7 +2,7 @@
 //
 // Reads registry.json (the source of truth), inlines each item's file contents,
 // and writes one JSON per item plus an index. This is what `npx shadcn add <url>`
-// and `npx @crafterui/cli components add <name>` consume. Deterministic, no external
+// consume. Deterministic, no external
 // CLI - the output is schema-conformant registry-item JSON.
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
@@ -32,7 +32,7 @@ function itemMarkdown(item, files) {
   const lines = [`# ${item.title}`, "", item.description, ""];
   if (hasDemo) lines.push(`- Demo: ${SITE}/components/${item.name}`);
   lines.push(
-    `- Install: \`npx @crafterui/cli@latest components add ${item.name}\` - or \`npx shadcn@latest add ${SITE}/r/${item.name}.json\``,
+    `- Install: \`npx shadcn@latest add ${SITE}/r/${item.name}.json\``,
   );
   if (item.dependencies?.length) lines.push(`- Dependencies: ${item.dependencies.join(", ")}`);
   if (item.registryDependencies?.length) lines.push(`- Registry dependencies: ${item.registryDependencies.join(", ")}`);

@@ -21,22 +21,34 @@
 
 - **Motion & interaction components** — scroll reveals, kinetic type, tooltips, toggles, AI composers; each built to do one thing well
 - **Open, then install** — browse at [crafterui.com/components](https://crafterui.com/components); open any for the live demo and its source
-- **shadcn registry** — install with `npx @crafterui/cli` or the shadcn CLI; you own the code, no runtime package
+- **shadcn registry** — install with the shadcn CLI; you own the code, no runtime package
 - **Fully Tailwind** — no CSS files to import; components carry their own scoped `<style>` only where a third-party widget needs it
 - **Motion-first** — animations with [motion](https://motion.dev)/react; interruptible, layout-aware, reduced-motion aware
 
 ## Install a component
 
 ```bash
-npx @crafterui/cli@latest components add letter-reveal
-npx @crafterui/cli@latest components add all       # everything at once
+npx shadcn@latest add "https://crafterui.com/r/letter-reveal.json"
+npx shadcn@latest add "https://crafterui.com/r/all.json"   # everything at once
 ```
 
-Or use the shadcn CLI directly:
+pnpm, yarn and bun run the same CLI: `pnpm dlx`, `yarn dlx`, `bunx --bun`.
+
+### Short names
+
+Register the namespace once in your `components.json`:
+
+```json
+{
+  "registries": { "@crafterui": "https://crafterui.com/r/{name}.json" }
+}
+```
+
+Then the URL is implied, and `search` lists the whole registry:
 
 ```bash
-npx shadcn@latest add https://crafterui.com/r/letter-reveal.json
-npx shadcn@latest add https://crafterui.com/r/all.json
+npx shadcn@latest add @crafterui/letter-reveal
+npx shadcn@latest search @crafterui
 ```
 
 Either way the component is copied into your project, with its registry
@@ -106,7 +118,7 @@ Browse components at [crafterui.com/components](https://crafterui.com/components
 any for the live demo, then install it into your app:
 
 ```bash
-npx @crafterui/cli@latest components add letter-reveal arrow-tooltip
+npx shadcn@latest add "https://crafterui.com/r/letter-reveal.json" "https://crafterui.com/r/arrow-tooltip.json"
 ```
 
 Component pages are statically generated from `registry.json`. Registry payloads at

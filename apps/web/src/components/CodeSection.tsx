@@ -18,19 +18,20 @@ import { CopyIcon, CheckIcon, ChevronDownIcon } from "../lib/icons";
 // preview deploy can be pointed elsewhere without touching every page.
 const REGISTRY_ORIGIN = "https://crafterui.com";
 
-type Manager = "crafterui" | "shadcn" | "pnpm";
+type Manager = "npm" | "pnpm" | "yarn" | "bun";
 
-const MANAGERS: { id: Manager; label: string }[] = [
-  { id: "crafterui", label: "crafterui" },
-  { id: "shadcn", label: "shadcn" },
-  { id: "pnpm", label: "pnpm" },
+// Every command is the same shadcn CLI call - only the "run a package binary"
+// prefix differs per manager. There is no @crafterui runtime package to install.
+const MANAGERS: { id: Manager; label: string; run: string }[] = [
+  { id: "npm", label: "npm", run: "npx" },
+  { id: "pnpm", label: "pnpm", run: "pnpm dlx" },
+  { id: "yarn", label: "yarn", run: "yarn dlx" },
+  { id: "bun", label: "bun", run: "bunx --bun" },
 ];
 
 function installCommand(id: Manager, slug: string): string {
-  const url = `${REGISTRY_ORIGIN}/r/${slug}.json`;
-  if (id === "crafterui") return `npx @crafterui/cli@latest components add ${slug}`;
-  if (id === "pnpm") return `pnpm dlx shadcn@latest add ${url}`;
-  return `npx shadcn@latest add ${url}`;
+  const run = MANAGERS.find((m) => m.id === id)?.run ?? "npx";
+  return `${run} shadcn@latest add "${REGISTRY_ORIGIN}/r/${slug}.json"`;
 }
 
 function useCopy() {
@@ -95,8 +96,21 @@ function SectionLabel({ children }: { children: ReactNode }) {
   );
 }
 
-const CODE_BOX =
-  "overflow-auto rounded-xl shadow-border text-[0.8125rem] leading-relaxed [&_pre]:m-0 [&_pre]:p-4 [&_pre]:overflow-visible [&_code]:font-mono";
+// Shiki writes both themes onto every token as CSS variables, so the block
+// re-colours with the site toggle - no re-highlight, no flash. The gutter is a
+// CSS counter over shiki's own .line spans (it emits one per line), unselectable
+// so copying a snippet by hand never drags the numbers with it. Written as
+// utilities rather than stylesheet rules: globals.css takes no class selectors.
+const CODE_BOX = [
+  "overflow-auto rounded-xl shadow-border text-[0.8125rem] leading-relaxed",
+  "[&_pre]:m-0 [&_pre]:p-4 [&_pre]:overflow-visible [&_code]:font-mono",
+  "[&_.shiki]:bg-[var(--shiki-light-bg)] [&_.shiki]:text-[var(--shiki-light)] [&_.shiki_span]:text-[var(--shiki-light)]",
+  "dark:[&_.shiki]:bg-[var(--shiki-dark-bg)] dark:[&_.shiki]:text-[var(--shiki-dark)] dark:[&_.shiki_span]:text-[var(--shiki-dark)]",
+  "[&_code]:grid [&_code]:[counter-reset:line]",
+  "[&_.line]:before:[counter-increment:line] [&_.line]:before:[content:counter(line)]",
+  "[&_.line]:before:mr-5 [&_.line]:before:inline-block [&_.line]:before:w-7 [&_.line]:before:text-right",
+  "[&_.line]:before:text-muted-foreground [&_.line]:before:opacity-55 [&_.line]:before:select-none",
+].join(" ");
 
 // All highlighted HTML is produced on the server (shiki) so no highlighter
 // ships to the client; the panels just toggle visibility.
@@ -116,7 +130,7 @@ export function CodeSection({
   /** The generated /r/<slug>.md - the whole component as one AI-ready document. */
   markdown?: string | null;
 }) {
-  const [manager, setManager] = useState<Manager>("crafterui");
+  const [manager, setManager] = useState<Manager>("npm");
   const [open, setOpen] = useState(false);
   const install = useCopy();
   const code = useCopy();

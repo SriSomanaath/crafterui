@@ -214,7 +214,7 @@ export function CrafterShowcase({
           label="Copy install command"
           onClick={() => {
             navigator.clipboard
-              .writeText(`npx @crafterui/cli@latest components add ${slug}`)
+              .writeText(`npx shadcn@latest add "https://crafterui.com/r/${slug}.json"`)
               .then(() => setCopied(true))
               .catch(() => setCopied(false));
           }}

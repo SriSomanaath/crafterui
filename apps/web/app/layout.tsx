@@ -6,7 +6,7 @@ import "./globals.css";
 
 const title = "crafterui - Less is more";
 const description =
-  "A collection of Open Source motion and interaction components that you can customize, extend, and build on. React + Tailwind, on the shadcn registry - copy the source or install with npx @crafterui/cli.";
+  "A collection of Open Source motion and interaction components that you can customize, extend, and build on. React + Tailwind, on the shadcn registry - copy the source or install with the shadcn CLI.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://crafterui.com"),

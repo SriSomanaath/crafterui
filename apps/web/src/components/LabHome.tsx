@@ -46,7 +46,7 @@ export function LabHome({ bento }: { bento: CrafterComponent[] }) {
           <p className="text-muted-foreground text-[0.9375rem] leading-relaxed mt-3 max-w-xl text-pretty">
             Motion and interaction components you can customize, extend, and build on. Open any for the live demo and the
             source you can copy or install with{" "}
-            <code className="text-foreground">npx @crafterui/cli@latest components add</code>.
+            <code className="text-foreground">npx shadcn@latest add</code>.
           </p>
         </header>
 
