@@ -460,6 +460,9 @@ function packAtlas(images: HTMLImageElement[], cols: number, cell: number, ratio
   if (!ctx) return sheet
   const cellH = Math.round(cell / ratio)
   images.forEach((image, i) => {
+    // A card that never decoded has no natural size; scaling by it yields
+    // Infinity and drawImage throws, taking every later cell with it.
+    if (!image.naturalWidth || !image.naturalHeight) return
     const x = (i % cols) * cell
     const y = Math.floor(i / cols) * cellH
     const scale = Math.max(cell / image.naturalWidth, cellH / image.naturalHeight)
@@ -551,9 +554,13 @@ export function MoltenRingCarousel({
       const image = new Image()
       image.crossOrigin = "anonymous"
       image.decoding = "async"
-      image.onload = () => {
+      // Settled, not loaded. The sheet is all-or-nothing, so a single URL that
+      // 404s or fails CORS would otherwise hold every card untextured for the
+      // life of the component - the failure mode is a blank white ring with
+      // nothing in the console.
+      const settle = () => {
         if (++loaded < count) return
-        // Assembled once the final image lands; packing early would leave unset
+        // Assembled once the last image settles; packing early would leave unset
         // cells sampling as solid black cards.
         atlas = gl.createTexture()
         gl.bindTexture(gl.TEXTURE_2D, atlas)
@@ -567,6 +574,11 @@ export function MoltenRingCarousel({
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR)
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
+      }
+      image.onload = settle
+      image.onerror = () => {
+        console.warn(`molten-ring-carousel: ${item.image} failed to load`)
+        settle()
       }
       image.src = item.image
       return image
@@ -906,7 +918,7 @@ export function MoltenRingCarousel({
       <section
         aria-roledescription="carousel"
         aria-label={brand ?? "Gallery"}
-        className={cn("bg-background text-foreground relative h-full w-full", className)}
+        className={cn("bg-background text-foreground relative h-full min-h-[24rem] w-full", className)}
         {...props}
       >
         <ul className="flex h-full snap-y snap-mandatory flex-col items-center gap-3 overflow-y-auto py-[6%]">
@@ -930,7 +942,7 @@ export function MoltenRingCarousel({
       aria-roledescription="carousel"
       aria-label={brand ?? "Gallery"}
       className={cn(
-        "bg-background text-foreground relative h-full w-full overflow-hidden select-none",
+        "bg-background text-foreground relative h-full min-h-[24rem] w-full overflow-hidden select-none",
         className
       )}
       {...props}
