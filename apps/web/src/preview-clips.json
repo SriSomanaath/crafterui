@@ -4,13 +4,14 @@
     "arrow-tooltip",
     "dynamic-island",
     "super-hover-list",
-    "scroll-text-reveal",
     "letter-reveal",
-    "theme-toggle",
     "countdown-timer",
     "username-reel",
     "handwritten-response",
     "hero-carousel",
-    "works-wheel"
+    "works-wheel",
+    "glass-lens-carousel",
+    "dither-helix-carousel",
+    "molten-ring-carousel"
   ]
 }

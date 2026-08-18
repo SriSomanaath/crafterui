@@ -60,9 +60,7 @@ export const demos: Record<string, ComponentType> = {
   "hero-carousel": dynamic(() => import("@/registry/crafterui/examples/hero-carousel-demo"), { ssr: false, loading: DemoSkeleton }),
   "letter-reveal": dynamic(() => import("@/registry/crafterui/examples/letter-reveal-demo"), { ssr: false, loading: DemoSkeleton }),
   "molten-ring-carousel": dynamic(() => import("@/registry/crafterui/examples/molten-ring-carousel-demo"), { ssr: false, loading: DemoSkeleton }),
-  "scroll-text-reveal": dynamic(() => import("@/registry/crafterui/examples/scroll-text-reveal-demo"), { ssr: false, loading: DemoSkeleton }),
   "super-hover-list": dynamic(() => import("@/registry/crafterui/examples/super-hover-list-demo"), { ssr: false, loading: DemoSkeleton }),
-  "theme-toggle": dynamic(() => import("@/registry/crafterui/examples/theme-toggle-demo"), { ssr: false, loading: DemoSkeleton }),
   "works-wheel": dynamic(() => import("@/registry/crafterui/examples/works-wheel-demo"), { ssr: false, loading: DemoSkeleton }),
   "username-reel": dynamic(() => import("@/registry/crafterui/examples/username-reel-demo"), { ssr: false, loading: DemoSkeleton }),
 };

@@ -146,41 +146,11 @@
       }
     ]
   },
-  "scroll-text-reveal": {
-    "settleMs": 900,
-    "durationMs": 7000,
-    "loop": "Returns the inner container to scrollTop 0, where every word is dim and parked right again, with an 800ms hold before the cut.",
-    "note": "The window never scrolls - the demo scrolls its own div.overflow-y-auto, read by useScroll({container}). 2880 is the exact track height at 960px tall; over/under-shoot clamps harmlessly.",
-    "steps": [
-      {
-        "t": 100,
-        "action": "moveTo",
-        "x": 640,
-        "y": 520,
-        "durationMs": 0
-      },
-      {
-        "t": 500,
-        "action": "scroll",
-        "selector": "div.overflow-y-auto",
-        "dy": 2880,
-        "durationMs": 2600
-      },
-      {
-        "t": 3900,
-        "action": "scroll",
-        "selector": "div.overflow-y-auto",
-        "dy": -2880,
-        "durationMs": 2300
-      }
-    ]
-  },
   "letter-reveal": {
     "settleMs": 1500,
     "durationMs": 7200,
-    "lockTheme": "dark",
     "loop": "Letter arrival is a pure function of scroll progress with no latched state, so rewinding to 0 un-types every glyph back to the empty headline.",
-    "note": "Locked to dark: the panel is hard-coded bg-black, but its caption and hairline use theme tokens, which turn near-invisible on black under the light theme. The -1800 return deliberately overshoots so it clamps at 0 whatever the panel height resolves to.",
+    "note": "No lockTheme any more: the demo used to force a bg-black panel while the components own caption and hairline read from theme tokens, so light mode was unreadable and only a dark take was usable. The demo now passes no surface override, the component paints bg-background/text-foreground, and each theme gets its own real recording. The -1800 return deliberately overshoots so it clamps at 0 whatever the panel height resolves to.",
     "steps": [
       {
         "t": 0,
@@ -204,73 +174,6 @@
         "durationMs": 2200
       }
     ]
-  },
-  "theme-toggle": {
-    "settleMs": 1200,
-    "durationMs": 7600,
-    "loop": "Four clicks flip the theme an even number of times and the last one re-selects the `circle` preset, so variant, direction, icon rotation and cursor all match frame 0.",
-    "note": "The preset buttons both toggle the theme and set the variant, so the count must be even AND end on circle. Skip `polygon` (identical to rectangle at start=bottom-up) and `gif` (2400ms, overruns the clip). The whole effect is document.startViewTransition, and it is gated on prefers-reduced-motion - the recorder pins that to no-preference.",
-    "steps": [
-      {
-        "t": 0,
-        "action": "moveTo",
-        "x": 1120,
-        "y": 230,
-        "durationMs": 0
-      },
-      {
-        "t": 500,
-        "action": "move",
-        "selector": "button[aria-label=\"Toggle theme\"]",
-        "durationMs": 450
-      },
-      {
-        "t": 1050,
-        "action": "click",
-        "selector": "button[aria-label=\"Toggle theme\"]"
-      },
-      {
-        "t": 2000,
-        "action": "move",
-        "selector": "button[aria-label=\"Toggle theme with rectangle reveal\"]",
-        "durationMs": 400
-      },
-      {
-        "t": 2500,
-        "action": "click",
-        "selector": "button[aria-label=\"Toggle theme with rectangle reveal\"]"
-      },
-      {
-        "t": 3400,
-        "action": "move",
-        "selector": "button[aria-label=\"Toggle theme with circle-blur reveal\"]",
-        "durationMs": 350
-      },
-      {
-        "t": 3850,
-        "action": "click",
-        "selector": "button[aria-label=\"Toggle theme with circle-blur reveal\"]"
-      },
-      {
-        "t": 4750,
-        "action": "move",
-        "selector": "button[aria-label=\"Toggle theme with circle reveal\"]",
-        "durationMs": 350
-      },
-      {
-        "t": 5200,
-        "action": "click",
-        "selector": "button[aria-label=\"Toggle theme with circle reveal\"]"
-      },
-      {
-        "t": 6100,
-        "action": "moveTo",
-        "x": 1120,
-        "y": 230,
-        "durationMs": 500
-      }
-    ],
-    "stage": 950
   },
   "countdown-timer": {
     "settleMs": 1200,
@@ -423,6 +326,134 @@
         "action": "scroll",
         "dy": -3600,
         "durationMs": 800
+      }
+    ]
+  },
+  "glass-lens-carousel": {
+    "settleMs": 2600,
+    "durationMs": 8400,
+    "loop": "Three panels out and three panels back, so the row rests on the same panel - Verdant, 01/12 - at both ends, with the cursor parked in the bottom-right corner throughout.",
+    "note": "Two things this recipe is tuned against, both invisible in a still. (1) The pre-roll is the clip run once with the camera off. The rows resting state straight after mount is NOT the state it comes back to after a gesture - it is still drifting toward centre, and EASE 0.09 / SNAP_EASE 0.05 make that drift outlast any settle worth waiting through - so frame 0 has to be a post-gesture state, not a post-mount one. (2) The return is 3600 against an outbound of 2700 because the row does not deliver a gesture symmetrically: the same magnitude going back lands a panel short every time, so the numbers are deliberately unequal - matching them is the bug, not the fix. The cursor must also sit over the canvas for the non-passive wheel listener to see the event at all; the corner is chosen because no panel is picked there.",
+    "steps": [
+      {
+        "t": -7000,
+        "action": "moveTo",
+        "x": 1160,
+        "y": 890,
+        "durationMs": 0
+      },
+      {
+        "t": -6600,
+        "action": "scroll",
+        "dy": -2700,
+        "durationMs": 1700
+      },
+      {
+        "t": -4200,
+        "action": "scroll",
+        "dy": 3600,
+        "durationMs": 1700
+      },
+      {
+        "t": 600,
+        "action": "scroll",
+        "dy": -2700,
+        "durationMs": 1700
+      },
+      {
+        "t": 4300,
+        "action": "scroll",
+        "dy": 2700,
+        "durationMs": 1700
+      }
+    ]
+  },
+  "dither-helix-carousel": {
+    "settleMs": 3400,
+    "durationMs": 8200,
+    "loop": "Four slots out, four slots back, and the drum snaps to a whole slot - so the same card faces front at both ends, with the cursor returned to the corner and every card back at full dither.",
+    "note": "1818px is exactly 4 slots at WHEEL 0.0022. Settle must clear ENTRY_SPIN_MS (2400) plus the staggered per-card entry, or the clip opens mid-arrival. The mid-clip hover is the components signature - pointing at a card clears its dither and pushes the rest back - and it is safe to loop because the pointer leaves again before the cut.",
+    "steps": [
+      {
+        "t": 0,
+        "action": "moveTo",
+        "x": 1160,
+        "y": 890,
+        "durationMs": 0
+      },
+      {
+        "t": 400,
+        "action": "scroll",
+        "dy": 1818,
+        "durationMs": 1400
+      },
+      {
+        "t": 2600,
+        "action": "moveTo",
+        "x": 640,
+        "y": 470,
+        "durationMs": 700
+      },
+      {
+        "t": 4100,
+        "action": "moveTo",
+        "x": 1160,
+        "y": 890,
+        "durationMs": 600
+      },
+      {
+        "t": 5000,
+        "action": "scroll",
+        "dy": -1818,
+        "durationMs": 1400
+      }
+    ]
+  },
+  "molten-ring-carousel": {
+    "settleMs": 4000,
+    "durationMs": 9200,
+    "loop": "Three slots out, three slots back at the same delta, so the ring snaps home to the card it started facing. Surface tension falls to zero at rest, so both ends are the same perfectly smooth ring.",
+    "note": "1364px is 3 slots at WHEEL 0.0022. Travel is what makes the cards fuse and part into strands; the pointer sweep between the two gestures is the other half of the component - it widens the fusion radius under itself - and it ends parked back in the corner so the closing frame carries no pointer influence. The long tail after the last gesture is not padding: SNAP_EASE is 0.06 and surface tension only falls to zero once the ring is genuinely at rest, so a shorter clip cuts while the strands are still contracting.",
+    "steps": [
+      {
+        "t": 0,
+        "action": "moveTo",
+        "x": 1160,
+        "y": 890,
+        "durationMs": 0
+      },
+      {
+        "t": 400,
+        "action": "scroll",
+        "dy": 1364,
+        "durationMs": 1300
+      },
+      {
+        "t": 2300,
+        "action": "moveTo",
+        "x": 430,
+        "y": 470,
+        "durationMs": 800
+      },
+      {
+        "t": 3500,
+        "action": "moveTo",
+        "x": 880,
+        "y": 430,
+        "durationMs": 800
+      },
+      {
+        "t": 4700,
+        "action": "moveTo",
+        "x": 1160,
+        "y": 890,
+        "durationMs": 600
+      },
+      {
+        "t": 5600,
+        "action": "scroll",
+        "dy": -1364,
+        "durationMs": 1300
       }
     ]
   }
