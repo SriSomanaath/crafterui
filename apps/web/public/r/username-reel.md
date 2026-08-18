@@ -2,8 +2,8 @@
 
 A slot-machine handle picker that spins a vertical reel of names past a fixed prefix, highlighting the centered one, then decelerates and lands on a final username, built with Motion.
 
-- Demo: https://crafterui.dev/components/username-reel
-- Install: `npx @crafterui/cli@latest components add username-reel` - or `npx shadcn@latest add https://crafterui.dev/r/username-reel.json`
+- Demo: https://crafterui.com/components/username-reel
+- Install: `npx @crafterui/cli@latest components add username-reel` - or `npx shadcn@latest add https://crafterui.com/r/username-reel.json`
 - Dependencies: motion
 - Installs to: `registry/crafterui/ui/username-reel.tsx`
 

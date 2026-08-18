@@ -2,8 +2,8 @@
 
 A carousel with no mesh and no image elements: every card is a rounded-box distance field, and one fullscreen pass takes a smooth minimum across all of them. Cards approaching fuse instead of overlapping, and cards separating trail strands that narrow, hang and part on their own, because a strand is another term in the same field. The pointer paints nothing - it widens the fusion radius beneath itself and tips nearby cards toward it.
 
-- Demo: https://crafterui.dev/components/molten-ring-carousel
-- Install: `npx @crafterui/cli@latest components add molten-ring-carousel` - or `npx shadcn@latest add https://crafterui.dev/r/molten-ring-carousel.json`
+- Demo: https://crafterui.com/components/molten-ring-carousel
+- Install: `npx @crafterui/cli@latest components add molten-ring-carousel` - or `npx shadcn@latest add https://crafterui.com/r/molten-ring-carousel.json`
 - Installs to: `registry/crafterui/ui/molten-ring-carousel.tsx`
 
 ## Usage
@@ -100,6 +100,7 @@ export interface MoltenRingCarouselProps
   threads?: boolean
   /** Optical band that bends the image at the upper and lower borders. @default true */
   glass?: boolean
+  /** Extra classes on the root surface. @default undefined */
   className?: string
 }
 

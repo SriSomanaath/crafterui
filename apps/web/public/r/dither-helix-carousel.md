@@ -2,8 +2,8 @@
 
 A spiral column of cards, each mapped onto the surface of the cylinder it orbits so its outer edges retreat in depth. As cards travel away they pass through a single-axis blur and then break up into an ordered threshold pattern read off a three-point tone scale. Pointing at a card clears it and pushes the rest back. The scale is built from your own theme tokens, so it prints correctly in light and dark.
 
-- Demo: https://crafterui.dev/components/dither-helix-carousel
-- Install: `npx @crafterui/cli@latest components add dither-helix-carousel` - or `npx shadcn@latest add https://crafterui.dev/r/dither-helix-carousel.json`
+- Demo: https://crafterui.com/components/dither-helix-carousel
+- Install: `npx @crafterui/cli@latest components add dither-helix-carousel` - or `npx shadcn@latest add https://crafterui.com/r/dither-helix-carousel.json`
 - Installs to: `registry/crafterui/ui/dither-helix-carousel.tsx`
 
 ## Usage
@@ -108,6 +108,7 @@ export interface DitherHelixCarouselProps
   cardRatio?: number
   /** Play the arrival - cards materialize out of the grain. @default true */
   entry?: boolean
+  /** Extra classes on the root surface. @default undefined */
   className?: string
 }
 

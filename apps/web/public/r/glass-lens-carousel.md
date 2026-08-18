@@ -2,8 +2,8 @@
 
 A looping image strip that is never drawn straight to screen: it renders to an offscreen texture, then a fullscreen pass samples it back through a thick optical element - drawing the picture inward, separating it into colour channels toward the perimeter, and adding a bright core, a modulated ring and an undulating edge. Scroll or drag to travel it; click a panel to bring it forward and enlarge it. Two WebGL2 passes, no 3D library.
 
-- Demo: https://crafterui.dev/components/glass-lens-carousel
-- Install: `npx @crafterui/cli@latest components add glass-lens-carousel` - or `npx shadcn@latest add https://crafterui.dev/r/glass-lens-carousel.json`
+- Demo: https://crafterui.com/components/glass-lens-carousel
+- Install: `npx @crafterui/cli@latest components add glass-lens-carousel` - or `npx shadcn@latest add https://crafterui.com/r/glass-lens-carousel.json`
 - Installs to: `registry/crafterui/ui/glass-lens-carousel.tsx`
 
 ## Usage
@@ -96,6 +96,7 @@ export interface GlassLensCarouselProps
   focusable?: boolean
   /** Label on the focused panel's dismiss control. @default "Close" */
   closeLabel?: string
+  /** Extra classes on the root surface. @default undefined */
   className?: string
 }
 

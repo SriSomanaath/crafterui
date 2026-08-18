@@ -2,8 +2,8 @@
 
 Headline type that writes itself in on scroll, one letter at a time, with a synthesised tick as each lands. Letters take no space until they arrive, so a centred line opens outward from the middle. Arrival order, raggedness, spacing behaviour and the tick are all tunable, plus an onReveal hook per letter.
 
-- Demo: https://crafterui.dev/components/letter-reveal
-- Install: `npx @crafterui/cli@latest components add letter-reveal` - or `npx shadcn@latest add https://crafterui.dev/r/letter-reveal.json`
+- Demo: https://crafterui.com/components/letter-reveal
+- Install: `npx @crafterui/cli@latest components add letter-reveal` - or `npx shadcn@latest add https://crafterui.com/r/letter-reveal.json`
 - Dependencies: motion
 - Installs to: `registry/crafterui/ui/letter-reveal.tsx`
 
@@ -16,10 +16,10 @@ import { LetterReveal } from "@/registry/crafterui/ui/letter-reveal"
 
 export default function LetterRevealDemo() {
   return (
-    <LetterReveal
-      lines={["Craft is in the detail.", "Scroll to hear it land."]}
-      className="bg-black text-white"
-    />
+    // No surface override: the component paints bg-background/text-foreground, and
+    // its caption and hairline read from the same tokens. Forcing a black panel
+    // here left those near-invisible under the light theme.
+    <LetterReveal lines={["Craft is in the detail.", "Scroll to hear it land."]} />
   )
 }
 ```
@@ -115,13 +115,13 @@ export interface LetterRevealProps {
   track?: number
   /** Tick config, or false for a silent component with no toggle. @default true */
   sound?: boolean | LetterRevealSound
-  /** Called as each letter lands - hook up your own audio, haptics or analytics. */
+  /** Called as each letter lands - hook up your own audio, haptics or analytics. @default undefined */
   onReveal?: (letter: { char: string; line: number; index: number }) => void
   /** Caption pinned under the type; pass `null` to hide it. @default "Scroll" */
   label?: string | null
-  /** Extra classes on the root surface. */
+  /** Extra classes on the root surface. @default undefined */
   className?: string
-  /** Extra classes on the headline. */
+  /** Extra classes on the headline. @default undefined */
   textClassName?: string
 }
 

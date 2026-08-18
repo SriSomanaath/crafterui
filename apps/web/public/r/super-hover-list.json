@@ -5,7 +5,7 @@
   "title": "Super Hover List",
   "description": "A scrollable index whose active row — and its revealed artwork — keeps tracking the cursor while the list scrolls beneath it, unlike native hover, via frame-by-frame hit-testing.",
   "registryDependencies": [
-    "https://crafterui.dev/r/super-hover.json"
+    "https://crafterui.com/r/super-hover.json"
   ],
   "files": [
     {

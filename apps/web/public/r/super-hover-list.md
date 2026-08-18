@@ -2,9 +2,9 @@
 
 A scrollable index whose active row — and its revealed artwork — keeps tracking the cursor while the list scrolls beneath it, unlike native hover, via frame-by-frame hit-testing.
 
-- Demo: https://crafterui.dev/components/super-hover-list
-- Install: `npx @crafterui/cli@latest components add super-hover-list` - or `npx shadcn@latest add https://crafterui.dev/r/super-hover-list.json`
-- Registry dependencies: https://crafterui.dev/r/super-hover.json
+- Demo: https://crafterui.com/components/super-hover-list
+- Install: `npx @crafterui/cli@latest components add super-hover-list` - or `npx shadcn@latest add https://crafterui.com/r/super-hover-list.json`
+- Registry dependencies: https://crafterui.com/r/super-hover.json
 - Installs to: `registry/crafterui/ui/super-hover-list.tsx`
 
 ## Usage

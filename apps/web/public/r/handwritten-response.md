@@ -2,8 +2,8 @@
 
 An AI answer written out in marker pen: Caveat handwriting, a highlighter swipe, a hand-drawn circle and a crossed-out correction, with each word inking in as it streams.
 
-- Demo: https://crafterui.dev/components/handwritten-response
-- Install: `npx @crafterui/cli@latest components add handwritten-response` - or `npx shadcn@latest add https://crafterui.dev/r/handwritten-response.json`
+- Demo: https://crafterui.com/components/handwritten-response
+- Install: `npx @crafterui/cli@latest components add handwritten-response` - or `npx shadcn@latest add https://crafterui.com/r/handwritten-response.json`
 - Installs to: `registry/crafterui/ui/handwritten-response.tsx`
 
 ## Usage
@@ -301,7 +301,7 @@ export function HandwrittenResponse({
   return (
     <div
       className={cn(
-        "font-[Caveat] text-[1.75rem] leading-[2.375rem] text-black dark:text-white",
+        "font-[Caveat] text-[1.75rem] leading-[2.375rem] text-foreground",
         className
       )}
     >

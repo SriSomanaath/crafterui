@@ -2,8 +2,8 @@
 
 A portfolio index that rests as a ring of cards around a title and, on the first notch of scroll, blows open into a vertical 3D drum you turn through - front card flat and full size, neighbours bowing away along an arc into hard perspective.
 
-- Demo: https://crafterui.dev/components/works-wheel
-- Install: `npx @crafterui/cli@latest components add works-wheel` - or `npx shadcn@latest add https://crafterui.dev/r/works-wheel.json`
+- Demo: https://crafterui.com/components/works-wheel
+- Install: `npx @crafterui/cli@latest components add works-wheel` - or `npx shadcn@latest add https://crafterui.com/r/works-wheel.json`
 - Installs to: `registry/crafterui/ui/works-wheel.tsx`
 
 ## Usage
@@ -13,19 +13,23 @@ A portfolio index that rests as a ring of cards around a title and, on the first
 
 import { WorksWheel, type WorksWheelItem } from "@/registry/crafterui/ui/works-wheel"
 
-// Placeholder photography from Unsplash, saved under public/gallery. Swap the
-// paths and the names for your own index - the wheel sizes its ring to however
-// many pieces it is handed.
+// Placeholder photography served straight off the Unsplash CDN so the demo
+// works the moment it is installed - no assets to copy into your public/. Swap
+// the ids and the names for your own index - the wheel sizes its ring to
+// however many pieces it is handed.
+const UNSPLASH = (id: string) =>
+  `https://images.unsplash.com/photo-${id}?w=1000&h=1400&fit=crop&crop=faces&q=80&auto=format`
+
 const WORKS: WorksWheelItem[] = [
-  { title: "Deep Signal", image: "/gallery/look-01.jpg", href: "#deep-signal" },
-  { title: "Paper Rose", image: "/gallery/look-02.jpg", href: "#paper-rose" },
-  { title: "White Noise", image: "/gallery/look-03.jpg", href: "#white-noise" },
-  { title: "Golden Hour", image: "/gallery/look-04.jpg", href: "#golden-hour" },
-  { title: "Neon Horizon", image: "/gallery/look-05.jpg", href: "#neon-horizon" },
-  { title: "Terra Cotta", image: "/gallery/look-06.jpg", href: "#terra-cotta" },
-  { title: "Burnt Umber", image: "/gallery/look-07.jpg", href: "#burnt-umber" },
-  { title: "Slate Field", image: "/gallery/look-08.jpg", href: "#slate-field" },
-  { title: "Low Tide", image: "/gallery/look-09.jpg", href: "#low-tide" },
+  { title: "Deep Signal", image: UNSPLASH("1509631179647-0177331693ae"), href: "#deep-signal" },
+  { title: "Paper Rose", image: UNSPLASH("1496747611176-843222e1e57c"), href: "#paper-rose" },
+  { title: "White Noise", image: UNSPLASH("1539109136881-3be0616acf4b"), href: "#white-noise" },
+  { title: "Golden Hour", image: UNSPLASH("1515886657613-9f3515b0c78f"), href: "#golden-hour" },
+  { title: "Neon Horizon", image: UNSPLASH("1494790108377-be9c29b29330"), href: "#neon-horizon" },
+  { title: "Terra Cotta", image: UNSPLASH("1483985988355-763728e1935b"), href: "#terra-cotta" },
+  { title: "Burnt Umber", image: UNSPLASH("1506794778202-cad84cf45f1d"), href: "#burnt-umber" },
+  { title: "Slate Field", image: UNSPLASH("1517841905240-472988babdf9"), href: "#slate-field" },
+  { title: "Low Tide", image: UNSPLASH("1534528741775-53994a69daeb"), href: "#low-tide" },
 ]
 
 export default function WorksWheelDemo() {
@@ -67,9 +71,9 @@ export interface WorksWheelProps extends Omit<
   "children"
 > {
   items: WorksWheelItem[]
-  /** Sits in the middle of the ring. */
+  /** Sits in the middle of the ring. @default undefined */
   label?: string
-  /** Label on the card's hover affordance. Omit to drop it. */
+  /** Label on the card's hover affordance. Omit to drop it. @default undefined */
   action?: string
 }
 

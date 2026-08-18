@@ -2,8 +2,8 @@
 
 An Apple-style Dynamic Island that morphs between idle, ring, silent, and timer states with spring physics and blurred content cross-fades using Motion.
 
-- Demo: https://crafterui.dev/components/dynamic-island
-- Install: `npx @crafterui/cli@latest components add dynamic-island` - or `npx shadcn@latest add https://crafterui.dev/r/dynamic-island.json`
+- Demo: https://crafterui.com/components/dynamic-island
+- Install: `npx @crafterui/cli@latest components add dynamic-island` - or `npx shadcn@latest add https://crafterui.com/r/dynamic-island.json`
 - Dependencies: motion
 - Installs to: `registry/crafterui/ui/dynamic-island.tsx`
 
@@ -75,7 +75,12 @@ export default function DynamicIslandDemo() {
 "use client"
 
 import * as React from "react"
-import { AnimatePresence, motion, type Transition } from "motion/react"
+import {
+  AnimatePresence,
+  MotionConfig,
+  motion,
+  type Transition,
+} from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -90,7 +95,7 @@ export const ISLAND_STATES: readonly IslandState[] = [
   "timer",
 ]
 
-interface DynamicIslandProps {
+export interface DynamicIslandProps {
   /**
    * Drive the state from outside (controlled). Leave undefined to let the
    * island own its state and start from `defaultState`. @default undefined
@@ -326,7 +331,9 @@ function TimerContent({
         type="button"
         onClick={() => setPaused((p) => !p)}
         aria-label={paused ? "Resume timer" : "Pause timer"}
-        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-transform active:scale-95"
+        // White ring, not the theme's: these sit on the pill's fixed black, where
+        // outline-foreground would be near-black on black under the light theme.
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-transform outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-95"
         style={{ backgroundColor: TIMER_AMBER }}
       >
         {paused ? <PlayGlyph /> : <PauseGlyph />}
@@ -335,7 +342,7 @@ function TimerContent({
         type="button"
         onClick={onCancel}
         aria-label="Cancel timer"
-        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#5A5A5E] transition-transform active:scale-95"
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#5A5A5E] transition-transform outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-95"
       >
         <CloseGlyph />
       </button>
@@ -385,6 +392,10 @@ export function DynamicIsland({
   const geo = GEOMETRY[state]
 
   return (
+    // One provider rather than a reduced-motion branch on each of the eight
+    // transitions below: `user` keeps the opacity cross-fades and drops the
+    // spring-driven size and radius morph, which is the part that moves.
+    <MotionConfig reducedMotion="user">
     <div className={cn("relative w-fit", className)}>
       <motion.div
         className="w-fit overflow-hidden bg-black"
@@ -438,6 +449,7 @@ export function DynamicIsland({
         </AnimatePresence>
       </motion.div>
     </div>
+    </MotionConfig>
   )
 }
 ```
