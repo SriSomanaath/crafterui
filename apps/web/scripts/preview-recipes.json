@@ -121,7 +121,7 @@
     "settleMs": 3500,
     "durationMs": 6400,
     "loop": "The pointer enters during settle and never leaves, so autoplay stays frozen for the whole take and the sweep returns to the row it started on.",
-    "note": "Covers are remote Unsplash URLs painted as background-image on hidden elements, hence the long settle. Autoplay's own period is ~66s - far past a clip - but onPointerEnter freezes it, so hovering is both the better beat and the only loopable one.",
+    "note": "Covers are remote CDN URLs painted as background-image on hidden elements, hence the long settle. Autoplay's own period is ~66s - far past a clip - but onPointerEnter freezes it, so hovering is both the better beat and the only loopable one.",
     "steps": [
       {
         "t": -600,
@@ -254,32 +254,32 @@
       {
         "t": -3000,
         "action": "click",
-        "selector": "button[aria-label=\"Terra Cotta\"]"
+        "selector": "button[aria-label=\"Neon Uplight\"]"
       },
       {
         "t": -1500,
         "action": "click",
-        "selector": "button[aria-label=\"Neon Horizon\"]"
+        "selector": "button[aria-label=\"Celestial Light\"]"
       },
       {
         "t": 700,
         "action": "click",
-        "selector": "button[aria-label=\"Terra Cotta\"]"
+        "selector": "button[aria-label=\"Neon Uplight\"]"
       },
       {
         "t": 2200,
         "action": "click",
-        "selector": "button[aria-label=\"Burnt Umber\"]"
+        "selector": "button[aria-label=\"Indigo Marble\"]"
       },
       {
         "t": 3700,
         "action": "click",
-        "selector": "button[aria-label=\"Terra Cotta\"]"
+        "selector": "button[aria-label=\"Neon Uplight\"]"
       },
       {
         "t": 5200,
         "action": "click",
-        "selector": "button[aria-label=\"Neon Horizon\"]"
+        "selector": "button[aria-label=\"Celestial Light\"]"
       },
       {
         "t": 6100,
@@ -332,7 +332,7 @@
   "glass-lens-carousel": {
     "settleMs": 2600,
     "durationMs": 8400,
-    "loop": "Three panels out and three panels back, so the row rests on the same panel - Verdant, 01/12 - at both ends, with the cursor parked in the bottom-right corner throughout.",
+    "loop": "Three panels out and three panels back, so the row rests on the same panel - Prismatic Rift, 01/09 - at both ends, with the cursor parked in the bottom-right corner throughout.",
     "note": "Two things this recipe is tuned against, both invisible in a still. (1) The pre-roll is the clip run once with the camera off. The rows resting state straight after mount is NOT the state it comes back to after a gesture - it is still drifting toward centre, and EASE 0.09 / SNAP_EASE 0.05 make that drift outlast any settle worth waiting through - so frame 0 has to be a post-gesture state, not a post-mount one. (2) The return is 3600 against an outbound of 2700 because the row does not deliver a gesture symmetrically: the same magnitude going back lands a panel short every time, so the numbers are deliberately unequal - matching them is the bug, not the fix. The cursor must also sit over the canvas for the non-passive wheel listener to see the event at all; the corner is chosen because no panel is picked there.",
     "steps": [
       {
