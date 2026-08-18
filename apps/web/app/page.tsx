@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon } from "@/src/lib/icons";
 
@@ -16,7 +17,13 @@ export default function HomePage() {
   return (
     <div className="min-h-screen flex items-center justify-center px-6 selection:bg-foreground selection:text-background">
       <main className="max-w-md text-center">
-        <p className="animate-fade-in font-mono text-xs tracking-wide text-muted-foreground select-none">crafterui</p>
+        {/* The mark is a solid black glyph on transparency - no tile - so it vanishes
+            against the dark page. invert() flips RGB and leaves alpha alone, which
+            turns it white and keeps the antialiased edges clean. */}
+        <div className="animate-fade-in flex items-center justify-center gap-3 select-none">
+          <Image src="/logo.png" alt="" width={44} height={44} className="dark:invert" priority />
+          <p className="font-mono text-lg tracking-wide text-foreground">crafterui</p>
+        </div>
 
         <h1
           className="animate-fade-in mt-3 text-2xl font-medium tracking-tight leading-[1.1] text-foreground text-balance"
@@ -25,27 +32,16 @@ export default function HomePage() {
           Less is more
         </h1>
 
+        {/* One sentence, no bolded fragments - the emphasis speckling made this
+            read as a wall. Install details live on each component page. */}
         <p
           className="animate-fade-in mt-4 text-muted-foreground text-[0.9375rem] leading-relaxed text-pretty"
           style={{ animationDelay: "100ms" }}
         >
-          Open Source <span className="font-medium text-foreground">motion and interaction components</span> you can{" "}
-          <span className="font-medium text-foreground">customize, extend, and build on</span>. Scroll reveals, kinetic
-          type, tooltips and toggles, built in React and fully Tailwind, and available in the{" "}
-          <span className="font-medium text-foreground">shadcn registry</span> - copy the source, install it with{" "}
-          <code className="whitespace-nowrap text-foreground">npx @crafterui/cli</code>, or star it on{" "}
-          <a
-            href="https://github.com/crafterui/ui"
-            target="_blank"
-            rel="noreferrer"
-            className="font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
-          >
-            GitHub
-          </a>
-          .
+          Open source motion and interaction components for React and Tailwind, on the shadcn registry.
         </p>
 
-        <div className="animate-fade-in mt-8" style={{ animationDelay: "150ms" }}>
+        <div className="animate-fade-in mt-8 flex items-center justify-center gap-5" style={{ animationDelay: "150ms" }}>
           <Link
             href="/components"
             className="group inline-flex items-center gap-2 rounded-full bg-foreground py-2.5 pl-5 pr-4 text-sm font-medium text-background select-none transition-[background-color,scale] hover:opacity-90 active:scale-[0.96]"
@@ -57,6 +53,14 @@ export default function HomePage() {
               <ArrowRightIcon />
             </span>
           </Link>
+          <a
+            href="https://github.com/SriSomanaath/crafterui"
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            GitHub
+          </a>
         </div>
       </main>
     </div>

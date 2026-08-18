@@ -9,13 +9,13 @@ const description =
   "A collection of Open Source motion and interaction components that you can customize, extend, and build on. React + Tailwind, on the shadcn registry - copy the source or install with npx @crafterui/cli.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://crafterui.dev"),
+  metadataBase: new URL("https://crafterui.com"),
   title: {
     default: title,
     template: "%s | crafterui",
   },
   description,
-  authors: [{ name: "crafterui", url: "https://crafterui.dev" }],
+  authors: [{ name: "crafterui", url: "https://crafterui.com" }],
   creator: "crafterui",
   keywords: [
     "crafterui",
@@ -28,8 +28,16 @@ export const metadata: Metadata = {
     "animation",
   ],
   icons: {
-    icon: "/favicon.svg",
+    // No SVG entry on purpose: browsers prefer it when offered, and the only one
+    // here was the scaffold placeholder, which would outrank the real artwork.
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
+  manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
     locale: "en_US",

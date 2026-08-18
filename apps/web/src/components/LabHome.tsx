@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { LabClipCard } from "./LabClipCard";
 import { Divider, ThemeToggle } from "./navigation";
@@ -5,7 +6,7 @@ import { ArrowLeftIcon, GitHubIcon } from "../lib/icons";
 import { catalog } from "../catalog";
 import type { CrafterComponent } from "../registry-data";
 
-const GITHUB_URL = "https://github.com/crafterui/ui";
+const GITHUB_URL = "https://github.com/SriSomanaath/crafterui";
 
 export function LabHome({ bento }: { bento: CrafterComponent[] }) {
   // The browse page is a three-up wall of cards, grouped in the registry's own
@@ -22,10 +23,11 @@ export function LabHome({ bento }: { bento: CrafterComponent[] }) {
           <div className="mb-8 flex items-center justify-between gap-4">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-base font-medium"
             >
               <ArrowLeftIcon />
-              crafterui.dev
+              <Image src="/logo.png" alt="" width={28} height={28} className="dark:invert" />
+              crafterui.com
             </Link>
             <div className="flex items-center gap-3">
               <a
@@ -83,7 +85,7 @@ export function LabHome({ bento }: { bento: CrafterComponent[] }) {
         <footer className="animate-fade-in text-center" style={{ animationDelay: "340ms" }}>
           <p className="text-muted-foreground text-sm">
             By{" "}
-            <Link href="https://crafterui.dev" className="hover:text-foreground transition-colors">
+            <Link href="https://crafterui.com" className="hover:text-foreground transition-colors">
               crafterui
             </Link>
           </p>
