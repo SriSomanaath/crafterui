@@ -1,4 +1,4 @@
-// Build the shadcn-format registry payloads that crafterui.dev/r/*.json serves.
+// Build the shadcn-format registry payloads that crafterui.com/r/*.json serves.
 //
 // Reads registry.json (the source of truth), inlines each item's file contents,
 // and writes one JSON per item plus an index. This is what `npx shadcn add <url>`
@@ -14,7 +14,7 @@ const registryPath = resolve(appRoot, "registry.json");
 const outDir = resolve(appRoot, "public/r");
 const ITEM_SCHEMA = "https://ui.shadcn.com/schema/registry-item.json";
 
-const SITE = "https://crafterui.dev";
+const SITE = "https://crafterui.com";
 
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 mkdirSync(outDir, { recursive: true });
@@ -58,7 +58,7 @@ for (const item of registry.items) {
   writeFileSync(resolve(outDir, `${item.name}.md`), itemMarkdown(item, files));
 }
 
-// One payload that installs everything, matching crafterui.dev/r/all.json.
+// One payload that installs everything, matching crafterui.com/r/all.json.
 const all = {
   $schema: ITEM_SCHEMA,
   name: "all",

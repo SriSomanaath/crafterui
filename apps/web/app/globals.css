@@ -91,7 +91,7 @@
 
 /* ── Palette ───────────────────────────────────────────────────────────────
    crafterui's own token values, so a component looks here exactly as it does on
-   crafterui.dev. Both the registry components and the page chrome resolve
+   crafterui.com. Both the registry components and the page chrome resolve
    against these, so the navbar toggle flips the whole site. Anything still
    hard-coded is a self-contained surface that supplies its own background (the
    card's white glass, the always-dark install block) - leave those literal. */

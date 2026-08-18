@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://crafterui.dev">
-    <img width="120" alt="crafterui" src="https://crafterui.dev/crafterui.svg" />
+  <a href="https://crafterui.com">
+    <img width="120" alt="crafterui" src="https://crafterui.com/crafterui.svg" />
   </a>
 </p>
 
@@ -12,15 +12,15 @@
 </p>
 
 <p align="center">
-  <a href="https://crafterui.dev/components">Browse</a> ·
-  <a href="https://github.com/crafterui/ui/issues/new">Report a bug</a> ·
-  <a href="https://github.com/crafterui/ui/issues/new">Feature request</a>
+  <a href="https://crafterui.com/components">Browse</a> ·
+  <a href="https://github.com/SriSomanaath/crafterui/issues/new">Report a bug</a> ·
+  <a href="https://github.com/SriSomanaath/crafterui/issues/new">Feature request</a>
 </p>
 
 ## Features
 
 - **Motion & interaction components** — scroll reveals, kinetic type, tooltips, toggles, AI composers; each built to do one thing well
-- **Open, then install** — browse at [crafterui.dev/components](https://crafterui.dev/components); open any for the live demo and its source
+- **Open, then install** — browse at [crafterui.com/components](https://crafterui.com/components); open any for the live demo and its source
 - **shadcn registry** — install with `npx @crafterui/cli` or the shadcn CLI; you own the code, no runtime package
 - **Fully Tailwind** — no CSS files to import; components carry their own scoped `<style>` only where a third-party widget needs it
 - **Motion-first** — animations with [motion](https://motion.dev)/react; interruptible, layout-aware, reduced-motion aware
@@ -35,8 +35,8 @@ npx @crafterui/cli@latest components add all       # everything at once
 Or use the shadcn CLI directly:
 
 ```bash
-npx shadcn@latest add https://crafterui.dev/r/letter-reveal.json
-npx shadcn@latest add https://crafterui.dev/r/all.json
+npx shadcn@latest add https://crafterui.com/r/letter-reveal.json
+npx shadcn@latest add https://crafterui.com/r/all.json
 ```
 
 Either way the component is copied into your project, with its registry
@@ -102,7 +102,7 @@ pnpm typecheck      # TypeScript across the monorepo
 
 ## Usage
 
-Browse components at [crafterui.dev/components](https://crafterui.dev/components), open
+Browse components at [crafterui.com/components](https://crafterui.com/components), open
 any for the live demo, then install it into your app:
 
 ```bash

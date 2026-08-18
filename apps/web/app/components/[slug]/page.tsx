@@ -124,7 +124,7 @@ export default async function ComponentPage({ params }: { params: Promise<{ slug
         <footer className="animate-fade-in text-center" style={{ animationDelay: "140ms" }}>
           <p className="text-muted-foreground text-sm">
             By{" "}
-            <Link href="https://crafterui.dev" className="hover:text-foreground transition-colors">
+            <Link href="https://crafterui.com" className="hover:text-foreground transition-colors">
               crafterui
             </Link>
           </p>

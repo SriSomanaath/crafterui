@@ -16,7 +16,7 @@ import { CopyIcon, CheckIcon, ChevronDownIcon } from "../lib/icons";
 
 // The registry origin the install commands point at. Kept as a constant so a
 // preview deploy can be pointed elsewhere without touching every page.
-const REGISTRY_ORIGIN = "https://crafterui.dev";
+const REGISTRY_ORIGIN = "https://crafterui.com";
 
 type Manager = "crafterui" | "shadcn" | "pnpm";
 
