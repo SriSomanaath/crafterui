@@ -230,7 +230,7 @@ export function HeroCarousel({
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
       className={cn(
-        "relative h-full w-full overflow-hidden bg-black text-white select-none",
+        "relative h-full min-h-[24rem] w-full overflow-hidden bg-black text-white select-none",
         "outline-none focus-visible:ring-1 focus-visible:ring-white/40 focus-visible:ring-inset",
         className
       )}

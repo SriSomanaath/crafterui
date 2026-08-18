@@ -734,7 +734,7 @@ export function GlassLensCarousel({
       <section
         aria-roledescription="carousel"
         aria-label={brand ?? "Gallery"}
-        className={cn("bg-background text-foreground relative h-full w-full", className)}
+        className={cn("bg-background text-foreground relative h-full min-h-[24rem] w-full", className)}
         {...props}
       >
         <ul className="flex h-full snap-x snap-mandatory items-center gap-3 overflow-x-auto px-[5%]">
@@ -757,7 +757,7 @@ export function GlassLensCarousel({
       aria-roledescription="carousel"
       aria-label={brand ?? "Gallery"}
       className={cn(
-        "bg-background text-foreground relative h-full w-full overflow-hidden select-none",
+        "bg-background text-foreground relative h-full min-h-[24rem] w-full overflow-hidden select-none",
         className
       )}
       {...props}

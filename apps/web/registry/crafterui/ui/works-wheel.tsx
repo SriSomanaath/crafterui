@@ -264,7 +264,7 @@ export function WorksWheel({
     <section
       aria-label={label}
       className={cn(
-        "bg-background text-foreground relative h-full w-full overflow-hidden select-none",
+        "bg-background text-foreground relative h-full min-h-[24rem] w-full overflow-hidden select-none",
         className
       )}
       {...props}

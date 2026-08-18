@@ -1012,7 +1012,7 @@ export function DitherHelixCarousel({
       <section
         aria-roledescription="carousel"
         aria-label={brand ?? "Gallery"}
-        className={cn("bg-background text-foreground relative h-full w-full", className)}
+        className={cn("bg-background text-foreground relative h-full min-h-[24rem] w-full", className)}
         {...props}
       >
         <ul className="flex h-full snap-y snap-mandatory flex-col items-center gap-3 overflow-y-auto py-[6%]">
@@ -1036,7 +1036,7 @@ export function DitherHelixCarousel({
       aria-roledescription="carousel"
       aria-label={brand ?? "Gallery"}
       className={cn(
-        "bg-background text-foreground relative h-full w-full overflow-hidden select-none",
+        "bg-background text-foreground relative h-full min-h-[24rem] w-full overflow-hidden select-none",
         className
       )}
       {...props}
