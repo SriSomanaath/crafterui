@@ -68,7 +68,9 @@ positives, listed with it. Read the hit before you touch it.
 ```bash
 # G3 — hardcoded colours. Check each hit against the exceptions above.
 # Known-good today: dynamic-island (fixed Apple palette), countdown-timer:148
-# (already pairs bg-black/[0.06] with dark:bg-white/10).
+# (already pairs bg-black/[0.06] with dark:bg-white/10), hero-carousel (always-dark
+# island - a full-bleed photograph is the background in every state, so the chrome
+# is fixed light-on-dark; its black/white washes are opacity, not paint).
 grep -rnE '(bg|text|border|fill|stroke|from|to|via)-\[#[0-9a-fA-F]{3,8}\]|bg-black|bg-white|text-black' \
   registry/crafterui/ui registry/crafterui/examples
 
