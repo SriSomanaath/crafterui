@@ -53,6 +53,7 @@ function DemoSkeleton() {
 export const demos: Record<string, ComponentType> = {
   "arrow-tooltip": dynamic(() => import("@/registry/crafterui/examples/arrow-tooltip-demo"), { ssr: false, loading: DemoSkeleton }),
   "countdown-timer": dynamic(() => import("@/registry/crafterui/examples/countdown-timer-demo"), { ssr: false, loading: DemoSkeleton }),
+  "corridor-carousel": dynamic(() => import("@/registry/crafterui/examples/corridor-carousel-demo"), { ssr: false, loading: DemoSkeleton }),
   "dither-helix-carousel": dynamic(() => import("@/registry/crafterui/examples/dither-helix-carousel-demo"), { ssr: false, loading: DemoSkeleton }),
   "dynamic-island": dynamic(() => import("@/registry/crafterui/examples/dynamic-island-demo"), { ssr: false, loading: DemoSkeleton }),
   "glass-lens-carousel": dynamic(() => import("@/registry/crafterui/examples/glass-lens-carousel-demo"), { ssr: false, loading: DemoSkeleton }),

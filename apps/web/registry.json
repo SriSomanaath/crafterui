@@ -183,6 +183,18 @@
       ]
     },
     {
+      "name": "corridor-carousel",
+      "type": "registry:ui",
+      "title": "Corridor Carousel",
+      "description": "A gallery you fly down instead of scroll through: four walls - left, right, ceiling and floor - papered with the same run of pictures, drifting out of the vanishing point and past your head. Wheel, drag or arrow keys shove it faster and it coasts back to its drift. Pure CSS 3D on one moving transform, with depth fog painted in the page background, so the corridor never re-renders while it runs.",
+      "files": [
+        {
+          "path": "registry/crafterui/ui/corridor-carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "spine-accordion",
       "type": "registry:ui",
       "title": "Spine Accordion",

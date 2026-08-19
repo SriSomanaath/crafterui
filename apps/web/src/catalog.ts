@@ -45,6 +45,10 @@ export const catalog: CatalogCategory[] = [
       {
         "slug": "spine-accordion",
         "fullBleed": true
+      },
+      {
+        "slug": "corridor-carousel",
+        "fullBleed": true
       }
     ]
   },
