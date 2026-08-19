@@ -15,6 +15,7 @@
     "molten-ring-carousel",
     "spine-accordion",
     "mercury-dial",
-    "mercury-menu"
+    "mercury-menu",
+    "corridor-carousel"
   ]
 }

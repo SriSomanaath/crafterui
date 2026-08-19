@@ -588,5 +588,14 @@
         "durationMs": 300
       }
     ]
+  },
+  "corridor-carousel": {
+    "settleMs": 1800,
+    "durationMs": 9000,
+    "crf": 34,
+    "waitFor": "Array.from(document.images).every(function (img) { return img.complete && img.naturalWidth > 0 })",
+    "loop": "One whole cycle of the run, and nothing else. Nine pictures spaced a tile apart drift past at exactly one tile a second, so at 9.0s the corridor is back on the frame it opened on - the panels are periodic in depth and a whole period of travel is a jump-cut to itself.",
+    "note": "No steps at all: the corridor runs on its own clock, and the pointer stays where it started because the vanishing point leans toward it - a lean left over at the cut would have to be unwound by hand. waitFor holds until all 76 panels have decoded, or the clip opens on the grey the frames sit on while their art loads. durationMs is not a taste call here: it is items x tile / speed, and any other value cuts mid-cycle. crf 34 rather than the default 26: this is the only clip where every pixel moves for its whole length, and at the default it encodes to 4.4MB - three times the next heaviest card - for a difference no card-sized frame shows.",
+    "steps": []
   }
 }
