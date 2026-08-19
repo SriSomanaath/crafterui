@@ -456,5 +456,137 @@
         "durationMs": 1300
       }
     ]
+  },
+  "spine-accordion": {
+    "settleMs": 2000,
+    "durationMs": 8200,
+    "loop": "Ends on the same spine the demo opens with (defaultIndex 7) and parks the cursor back off-stage, so the cut lands on the resting frame.",
+    "note": "Jump-cut moves (durationMs 0): hover opens a panel, so an eased path across the shelf cascades every spine it grazes and the unfurl never finishes. Each dwell is longer than the 700ms flex-basis transition so the picture settles before the next move. Coordinates come from the button rects, which shift as panels open - hence selector+nth rather than x/y.",
+    "steps": [
+      {
+        "t": 0,
+        "action": "moveTo",
+        "x": 640,
+        "y": 1010,
+        "durationMs": 0
+      },
+      {
+        "t": 300,
+        "action": "move",
+        "selector": "button[aria-expanded]",
+        "nth": 2,
+        "durationMs": 0
+      },
+      {
+        "t": 1900,
+        "action": "move",
+        "selector": "button[aria-expanded]",
+        "nth": 4,
+        "durationMs": 0
+      },
+      {
+        "t": 3500,
+        "action": "move",
+        "selector": "button[aria-expanded]",
+        "nth": 0,
+        "durationMs": 0
+      },
+      {
+        "t": 5100,
+        "action": "move",
+        "selector": "button[aria-expanded]",
+        "nth": 7,
+        "durationMs": 0
+      },
+      {
+        "t": 6700,
+        "action": "moveTo",
+        "x": 640,
+        "y": 1010,
+        "durationMs": 0
+      }
+    ]
+  },
+  "mercury-dial": {
+    "settleMs": 900,
+    "durationMs": 6200,
+    "loop": "Opens, is browsed, and closes again - the last frame is the resting circle the first frame shows, cursor parked off-stage so no hover disc is lit.",
+    "note": "Recorded unscaled: the grab converts pointer pixels into the component's own 32px units through its `size` prop, and a `stage` zoom is a second transform it cannot see. The trigger is picked by aria-controls, not aria-haspopup - the preview page's own theme control answers to that too, and pressing it reads to the component as an outside press. NO GRAB STEP: a press-drag-release is correct under real CDP input (verified open, closed, and after a hover walk - the click is suppressed every time and nothing toggles) but does not reproduce inside the recorder, where it leaks a click and opens the menu a beat early. The clip therefore shows open, hover and close only; the stretch is the one thing here a clip does not carry.",
+    "steps": [
+      {
+        "t": 0,
+        "action": "moveTo",
+        "x": 640,
+        "y": 1010,
+        "durationMs": 0
+      },
+      {
+        "t": 400,
+        "action": "click",
+        "selector": "button[aria-controls^=\"mercury-dial-menu\"]",
+        "durationMs": 350
+      },
+      {
+        "t": 2100,
+        "action": "move",
+        "selector": "[role=\"menuitem\"]",
+        "nth": 0,
+        "durationMs": 450
+      },
+      {
+        "t": 3500,
+        "action": "click",
+        "selector": "button[aria-controls^=\"mercury-dial-menu\"]",
+        "durationMs": 350
+      },
+      {
+        "t": 5000,
+        "action": "moveTo",
+        "x": 640,
+        "y": 1010,
+        "durationMs": 300
+      }
+    ]
+  },
+  "mercury-menu": {
+    "settleMs": 900,
+    "durationMs": 6200,
+    "loop": "Opens, is browsed, and closes again - the last frame is the resting circle the first frame shows, cursor parked off-stage so no hover disc is lit.",
+    "note": "Recorded unscaled: the grab converts pointer pixels into the component's own 32px units through its `size` prop, and a `stage` zoom is a second transform it cannot see. The trigger is picked by aria-controls, not aria-haspopup - the preview page's own theme control answers to that too, and pressing it reads to the component as an outside press. NO GRAB STEP: a press-drag-release is correct under real CDP input (verified open, closed, and after a hover walk - the click is suppressed every time and nothing toggles) but does not reproduce inside the recorder, where it leaks a click and opens the menu a beat early. The clip therefore shows open, hover and close only; the stretch is the one thing here a clip does not carry.",
+    "steps": [
+      {
+        "t": 0,
+        "action": "moveTo",
+        "x": 640,
+        "y": 1010,
+        "durationMs": 0
+      },
+      {
+        "t": 400,
+        "action": "click",
+        "selector": "button[aria-controls^=\"mercury-menu-\"]",
+        "durationMs": 350
+      },
+      {
+        "t": 2100,
+        "action": "move",
+        "selector": "[role=\"menuitem\"]",
+        "nth": 3,
+        "durationMs": 450
+      },
+      {
+        "t": 3500,
+        "action": "click",
+        "selector": "button[aria-controls^=\"mercury-menu-\"]",
+        "durationMs": 350
+      },
+      {
+        "t": 5000,
+        "action": "moveTo",
+        "x": 640,
+        "y": 1010,
+        "durationMs": 300
+      }
+    ]
   }
 }

@@ -3,7 +3,7 @@
   "name": "all",
   "type": "registry:ui",
   "title": "All crafterui components",
-  "description": "Arrow Tooltip, Dynamic Island, Countdown Timer, Super Hover, Super Hover List, Username Reel, Handwritten Response, Letter Reveal, Hero Carousel, Works Wheel, Glass Lens Carousel, Dither Helix Carousel, Molten Ring Carousel",
+  "description": "Arrow Tooltip, Dynamic Island, Countdown Timer, Super Hover, Super Hover List, Username Reel, Handwritten Response, Letter Reveal, Hero Carousel, Works Wheel, Glass Lens Carousel, Dither Helix Carousel, Molten Ring Carousel, Spine Accordion, Mercury Surface, Mercury Dial, Mercury Menu",
   "registryDependencies": [
     "https://crafterui.com/r/arrow-tooltip.json",
     "https://crafterui.com/r/dynamic-island.json",
@@ -17,6 +17,10 @@
     "https://crafterui.com/r/works-wheel.json",
     "https://crafterui.com/r/glass-lens-carousel.json",
     "https://crafterui.com/r/dither-helix-carousel.json",
-    "https://crafterui.com/r/molten-ring-carousel.json"
+    "https://crafterui.com/r/molten-ring-carousel.json",
+    "https://crafterui.com/r/spine-accordion.json",
+    "https://crafterui.com/r/mercury-surface.json",
+    "https://crafterui.com/r/mercury-dial.json",
+    "https://crafterui.com/r/mercury-menu.json"
   ]
 }

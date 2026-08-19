@@ -12,6 +12,9 @@
     "works-wheel",
     "glass-lens-carousel",
     "dither-helix-carousel",
-    "molten-ring-carousel"
+    "molten-ring-carousel",
+    "spine-accordion",
+    "mercury-dial",
+    "mercury-menu"
   ]
 }

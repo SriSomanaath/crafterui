@@ -181,6 +181,69 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "spine-accordion",
+      "type": "registry:ui",
+      "title": "Spine Accordion",
+      "description": "A shelf of work you open one piece at a time. Closed, every project is a hairline spine with its name set bottom-to-top along the edge; hover, tap or focus one and it unfurls into a framed picture while the rest close back. The layout is one animated flex-grow over a shared basis, so the shelf fits four pieces or twenty without measuring anything, and stacks into rows when its container is narrow.",
+      "files": [
+        {
+          "path": "registry/crafterui/ui/spine-accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "mercury-surface",
+      "type": "registry:ui",
+      "title": "Mercury Surface",
+      "description": "Headless gooey-surface engine: an SVG metaball filter whose border never swells, because every working blur carries its own solved pair of alpha thresholds, plus the grab gesture that pulls a liquid finger out of any surface and whips it back on a spring. Renders one filter and hands back a controller - no UI of its own.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/crafterui/ui/mercury-surface.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "mercury-dial",
+      "type": "registry:ui",
+      "title": "Mercury Dial",
+      "description": "A speed dial that bursts into droplets. The trigger swells while the drops gather inside it, each one oozes out under surface tension and then fires past full size on a pop spring; closing winds up the wrong way and dives them back in with a splat. Press and drag any drop and a liquid finger stretches out of its rim.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://crafterui.com/r/mercury-surface.json"
+      ],
+      "files": [
+        {
+          "path": "registry/crafterui/ui/mercury-dial.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "mercury-menu",
+      "type": "registry:ui",
+      "title": "Mercury Menu",
+      "description": "A dropdown the button pours out of itself. The trigger swells, the panel oozes up under its own weight and then fires into place on a pop spring with the rows condensing in bottom-up; closing crashes it back down in one dive and the button takes the hit with a splat. Press and drag the button or the open panel and a liquid finger stretches out of its rim.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://crafterui.com/r/mercury-surface.json"
+      ],
+      "files": [
+        {
+          "path": "registry/crafterui/ui/mercury-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

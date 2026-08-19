@@ -41,6 +41,25 @@ export const catalog: CatalogCategory[] = [
       {
         "slug": "molten-ring-carousel",
         "fullBleed": true
+      },
+      {
+        "slug": "spine-accordion",
+        "fullBleed": true
+      }
+    ]
+  },
+  {
+    "slug": "liquid-metal",
+    "title": "Liquid Metal",
+    "description": "Gooey surfaces that fuse, stretch and snap back",
+    "components": [
+      {
+        "slug": "mercury-dial",
+        "fullBleed": true
+      },
+      {
+        "slug": "mercury-menu",
+        "fullBleed": true
       }
     ]
   },
