@@ -448,7 +448,7 @@ function run(cmd, args) {
 const tailOf = (frames, durationMs) =>
   Math.max(0, durationMs / 1000 - (frames[frames.length - 1].ts - frames[0].ts));
 
-async function encode(frames, dir, mp4, poster, durationMs) {
+async function encode(frames, dir, mp4, poster, durationMs, crf) {
   const list = [];
   for (let i = 0; i < frames.length; i++) {
     const name = `${String(i).padStart(5, "0")}.jpg`;
@@ -472,7 +472,7 @@ async function encode(frames, dir, mp4, poster, durationMs) {
     // be expressed there; this is the part of the clip where nothing is moving
     // and the eye is meant to settle before the cut.
     "-vf", `fps=${FPS},tpad=stop_mode=clone:stop_duration=${tailOf(frames, durationMs).toFixed(3)},scale=${WIDTH}:${HEIGHT}:flags=lanczos,format=yuv420p`,
-    "-c:v", "libx264", "-preset", "slow", "-crf", "26", "-profile:v", "high", "-level", "4.0",
+    "-c:v", "libx264", "-preset", "slow", "-crf", String(crf), "-profile:v", "high", "-level", "4.0",
     "-movflags", "+faststart", "-an", mp4,
   ]);
 
@@ -662,6 +662,13 @@ try {
         clipPath(slug, theme),
         theme === themes[0] ? path.join(OUT_DIR, `${slug}.jpg`) : null,
         recipe.durationMs ?? 6000,
+        /* 26 suits a clip that is mostly still: only the moving part of the
+           frame costs bits. A recipe where every pixel moves - a corridor of
+           photographs flying past the camera - pays that rate over the whole
+           frame for the whole clip and lands at 4MB, three times the next
+           heaviest card. Those recipes name their own number; the card paints
+           at ~370px, where the difference does not survive the downscale. */
+        recipe.crf ?? 26,
       );
       if (!KEEP_FRAMES) await fs.rm(dir, { recursive: true, force: true });
 
